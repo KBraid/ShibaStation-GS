@@ -1,6 +1,368 @@
 Entries:
 - author: AstroDogeDX
   changes:
+  - message: New species; Resomi! Definitely Legally Distinct™ space avians who are
+      small and cold resistant!
+    type: Add
+  id: 67
+  time: '2024-12-26T06:49:43.032857'
+- author: AstroDogeDX
+  changes:
+  - message: Thief now has two new steal targets. Gee I wonder what they are...
+    type: Add
+  id: 66
+  time: '2024-12-24T05:18:18.885721'
+- author: AstroDogeDX
+  changes:
+  - message: Added the Experimental RPD - a self-charging version of the RPD!
+    type: Add
+  id: 65
+  time: '2024-12-24T05:17:14.334285'
+- author: AstroDogeDX
+  changes:
+  - message: Events have been tweaked YET AGAIN... we'll get there eventually...
+    type: Tweak
+  id: 64
+  time: '2024-12-24T05:18:54.075706'
+- author: AstroDogeDX
+  changes:
+  - message: Experimental RCD and Experimental RPD have been added to the CE locker!
+    type: Add
+  id: 63
+  time: '2024-12-24T05:17:42.883565'
+- author: AstroDogeDX
+  changes:
+  - message: (Admin) aghosts can now perform surgery and target limbs. This is useful
+      for admemes!
+    type: Add
+  id: 62
+  time: '2024-12-24T05:19:36.725884'
+- author: AstroDogeDX
+  changes:
+  - message: Hostile mob spawns from vents have been tweaked again to stagger depending
+      on player count, with the least to most robust mobs spawning as player count
+      increases.
+    type: Tweak
+  id: 61
+  time: '2024-12-22T16:36:42.153573'
+- author: AstroDogeDX
+  changes:
+  - message: Security now gets access to Medical under the Extended Access protocol.
+    type: Add
+  id: 60
+  time: '2024-12-22T16:35:47.448547'
+- author: AstroDogeDX
+  changes:
+  - message: Medical now gets access to Science under the Extended Access protocol.
+    type: Add
+  id: 59
+  time: '2024-12-22T16:35:18.161421'
+- author: AstroDogeDX
+  changes:
+  - message: Science now gets access to Medical under the Extended Access protocol.
+    type: Add
+  id: 58
+  time: '2024-12-22T16:33:27.988153'
+- author: AstroDogeDX
+  changes:
+  - message: Dwarves can now also fit in duffels, but they're wider than felinids
+      and rodentians.
+    type: Add
+  id: 57
+  time: '2024-12-22T16:32:53.725550'
+- author: AstroDogeDX
+  changes:
+  - message: (Admin) aghosts now have an intrinsic HUD that shows all the stats at
+      a glance of an entity. This'll help us find you when you die on the VGroid.
+    type: Add
+  id: 56
+  time: '2024-12-22T16:39:31.993896'
+- author: AstroDogeDX
+  changes:
+  - message: Events now have various cooldowns to be less chaotic.
+    type: Tweak
+  id: 55
+  time: '2024-12-21T06:11:00.270326'
+- author: AstroDogeDX
+  changes:
+  - message: Medborgs can now do surgery again!
+    type: Fix
+  id: 54
+  time: '2024-12-21T06:11:20.734939'
+- author: AstroDogeDX
+  changes:
+  - message: The vent clog event will now happen regardless of population.
+    type: Tweak
+  id: 53
+  time: '2024-12-20T04:42:29.484184'
+- author: AstroDogeDX
+  changes:
+  - message: Hostile vent critters will now spawn at a lower population (8-12). Better
+      consider a job in Security!
+    type: Tweak
+  id: 52
+  time: '2024-12-20T04:43:03.637369'
+- author: AstroDogeDX
+  changes:
+  - message: Improvements to the solar flare shielding have been made, and comms interruptions
+      should be less frequent.
+    type: Tweak
+  id: 51
+  time: '2024-12-20T04:48:21.926394'
+- author: AstroDogeDX
+  changes:
+  - message: Felinid and Rodentian PsuedoItem sizes have been adjusted so now two
+      smols can fit in a single duffel bag, or one smol in a regular backpack! Smol
+      Ops real.
+    type: Tweak
+  id: 50
+  time: '2024-12-20T03:15:33.491106'
+- author: AstroDogeDX
+  changes:
+  - message: CentComm's Electrical Engineering Division has made some improvements
+      to the power grid. There should be less blackouts and when they do happen, they'll
+      be shorter.
+    type: Tweak
+  id: 49
+  time: '2024-12-20T04:45:28.229226'
+- author: AstroDogeDX
+  changes:
+  - message: CentComm's Dork (IT) Division has updated the antivirus software to prevent
+      the Greytide Virus from occuring. (No Greytide Virus Event)
+    type: Remove
+  id: 48
+  time: '2024-12-20T04:45:32.863729'
+- author: AstroDogeDX
+  changes:
+  - message: Lockers becoming Bluespaced is now capped at 10 per shift; achieved by
+      some quantum wibbly wobbly timey wimey stuff.
+    type: Tweak
+  id: 47
+  time: '2024-12-20T04:46:30.521739'
+- author: AstroDogeDX
+  changes:
+  - message: Fixed borg emotes appearing in the wheel, and lizzers not being able
+      to weh!
+    type: Fix
+  id: 46
+  time: '2024-12-20T03:14:11.669916'
+- author: AstroDogeDX
+  changes:
+  - message: Amber Station has been made available at zero pop; time to explore uncharted
+      territory!
+    type: Add
+  id: 45
+  time: '2024-12-20T04:47:08.937667'
+- author: AstroDogeDX
+  changes:
+  - message: IPC voices are more like borgs than pAIs.
+    type: Tweak
+  id: 44
+  time: '2024-12-17T14:41:20.178587'
+- author: AstroDogeDX
+  changes:
+  - message: Fixed IPC glasses slot being in the wrong place. They go on your face,
+      silly.
+    type: Fix
+  id: 43
+  time: '2024-12-17T14:41:22.498334'
+- author: AstroDogeDX
+  changes:
+  - message: IPCs now have a built in flashlight. Just makes sense.
+    type: Add
+  id: 42
+  time: '2024-12-17T14:41:23.202776'
+- author: AstroDogeDX
+  changes:
+  - message: Ported the mouse/cockroach/snail pickup fix from WizDen.
+    type: Fix
+  id: 41
+  time: '2024-12-16T14:11:11.277728'
+- author: AstroDogeDX
+  changes:
+  - message: Yowies have been sent back to Space Australia. (No longer a round-start
+      species, they need a lot more work.)
+    type: Remove
+  id: 40
+  time: '2024-12-16T13:37:56.146007'
+- author: AstroDogeDX
+  changes:
+  - message: Added minimum player requirement for some Syndicate shuttles/ghost roles
+      to spawn.
+    type: Fix
+  id: 39
+  time: '2024-12-16T13:13:04.474340'
+- author: AstroDogeDX
+  changes:
+  - message: The rules have been updated for an MRP environment. Please give them
+      a quick look over. Most importantly; make yourself aware of the new Job Expectations.
+    type: Add
+  id: 38
+  time: '2024-12-16T13:12:32.930517'
+- author: AstroDogeDX
+  changes:
+  - message: Added the No EORG popup from DeltaV to ShibaStation - with some additions.
+      Coming soon - THE MURDERBOX!
+    type: Add
+  id: 37
+  time: '2024-12-16T13:13:36.666262'
+- author: AstroDogeDX
+  changes:
+  - message: Degremlinfied felinids back to their cat selves.
+    type: Fix
+  id: 36
+  time: '2024-12-06T17:44:06.267572'
+- author: AstroDogeDX
+  changes:
+  - message: Added jolly Christmas cheer!
+    type: Add
+  id: 35
+  time: '2024-12-06T17:44:40.645953'
+- author: AstroDogeDX
+  changes:
+  - message: Stack sizes for ores have been increased from 30 to 50.
+    type: Tweak
+  id: 34
+  time: '2024-12-06T11:16:35.049522'
+- author: AstroDogeDX
+  changes:
+  - message: Flying harpies can pull entities despite having occupied hands, by using
+      their talons, of course! They use their hands (wings?) when not flying, still.
+    type: Add
+  id: 33
+  time: '2024-12-06T11:01:35.877245'
+- author: AstroDogeDX
+  changes:
+  - message: Harpies now drain hunger instead of stamina to fly, and can't fly/stop
+      flying if they're starving.
+    type: Tweak
+  id: 32
+  time: '2024-12-06T11:01:06.821933'
+- author: AstroDogeDX
+  changes:
+  - message: Harpies take off to fly instantly now.
+    type: Tweak
+  id: 31
+  time: '2024-12-06T11:00:19.762857'
+- author: AstroDogeDX
+  changes:
+  - message: (re)Added shock collars to the security lockers. ( ͡° ͜ʖ ͡°)
+    type: Add
+  id: 30
+  time: '2024-12-05T22:52:29.557326'
+- author: AstroDogeDX
+  changes:
+  - message: Rodentia accent added; squeak!
+    type: Add
+  id: 29
+  time: '2024-11-29T11:02:15.301328'
+- author: AstroDogeDX
+  changes:
+  - message: Replaced the Italian accent with a superior one from Old Shiba.
+    type: Fix
+  id: 28
+  time: '2024-11-29T11:00:38.875821'
+- author: AstroDogeDX
+  changes:
+  - message: Replaced the German accent with a superior one from Old Shiba.
+    type: Fix
+  id: 27
+  time: '2024-11-29T11:00:24.047875'
+- author: AstroDogeDX
+  changes:
+  - message: Added the Geeza accent from Old Shiba, oite, innit?
+    type: Add
+  id: 26
+  time: '2024-11-29T11:01:11.594617'
+- author: AstroDogeDX
+  changes:
+  - message: Added the Felinid accent from Old Shiba, with some minor improvements!
+    type: Add
+  id: 25
+  time: '2024-11-29T11:01:46.800663'
+- author: AstroDogeDX
+  changes:
+  - message: SciScan cartridge added to Research Director's Locker, and preinstalled
+      on Admin and CentComm PDAs.
+    type: Add
+  id: 24
+  time: '2024-11-29T09:05:15.963330'
+- author: AstroDogeDX
+  changes:
+  - message: Renamed Goob Coins to Shiba Shillings - since, you know, it's a shiba-themed
+      server.
+    type: Tweak
+  id: 23
+  time: '2024-11-27T08:57:59.246842'
+- author: AstroDogeDX
+  changes:
+  - message: aghosts now have pretty summer dresses with FOUR pocket slots. Okay I
+      lied about the dress part.
+    type: Add
+  id: 22
+  time: '2024-11-27T08:49:51.474842'
+- author: AstroDogeDX
+  changes:
+  - message: Added missing NT towel to the list.
+    type: Fix
+  id: 21
+  time: '2024-11-27T08:15:55.812713'
+- author: AstroDogeDX
+  changes:
+  - message: The new lizard emotes are now exclusive to the lizard (and harpies).
+    type: Fix
+  id: 20
+  time: '2024-11-27T08:17:05.566123'
+- author: AstroDogeDX
+  changes:
+  - message: Asteroids and wrecks have been re-added; assuming salvage will do their
+      job properly.
+    type: Add
+  id: 19
+  time: '2024-11-23T03:49:44.581606'
+- author: AstroDogeDX
+  changes:
+  - message: Sharks and Towels now have their own loadout groups; and their requirements
+      to unlock have been adjusted.
+    type: Tweak
+  id: 18
+  time: '2024-11-23T03:48:10.320837'
+- author: AstroDogeDX
+  changes:
+  - message: Lizards can now hiss, rattle, chirp, trill and sigh - noisy lizzers.
+    type: Add
+  id: 17
+  time: '2024-11-23T03:55:44.770351'
+- author: AstroDogeDX
+  changes:
+  - message: Added the dedicated Mail Carrier role into cargo, with their own loadout
+      and slots on the maps that support them. (Train, Atlas, Bagel, Cluster, Fland,
+      Oasis and Origin)
+    type: Add
+  id: 16
+  time: '2024-11-19T17:52:11.037014'
+- author: AstroDogeDX
+  changes:
+  - message: Greenshift is now voteable at low pop. Admin intervention required at
+      higher pop.
+    type: Tweak
+  id: 15
+  time: '2024-11-19T17:59:48.496480'
+- author: AstroDogeDX
+  changes:
+  - message: Harpies, Vulpkanin, Felinids and Rodentians now gasp and deathgasp correctly.
+    type: Fix
+  id: 14
+  time: '2024-11-19T18:11:38.194161'
+- author: AstroDogeDX
+  changes:
+  - message: Added six new shark plushies that represent each department, unlockable
+      after putting in some serious hours (find them in the trinkets loadout)!
+    type: Add
+  id: 13
+  time: '2024-11-19T17:51:20.657928'
+- author: AstroDogeDX
+  changes:
   - message: Moth people, slime people and rodentia now have better fitting species
       names. (Lepidopterans, Amorphians and Rodentians respectively).
     type: Tweak

@@ -2,7 +2,7 @@
   id: Atlas
   mapName: Atlas
   mapPath: /Maps/_Goobstation/atlas.yml
-  minPlayers: 5
+  minPlayers: 0
   maxPlayers: 20
   stations:
     Atlas:
@@ -53,8 +53,16 @@
             Quartermaster: [ 1, 1 ]
             SalvageSpecialist: [ 2, 2 ]
             CargoTechnician: [ 2, 2 ]
+            MailCarrier: [ 1, 1 ]
             #civillian
             Passenger: [ -1, -1 ]
             Clown: [ 1, 1 ]
             Mime: [ 1, 1 ]
             Musician: [ 1, 1 ]
+
+        # Goobstation blob-config-start SMALL+
+        - type: StationBlobConfig
+          stageBegin: 25
+          stageCritical: 350
+          stageTheEnd: 700
+        # Goobstation blob-config-end

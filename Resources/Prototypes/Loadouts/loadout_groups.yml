@@ -7,11 +7,9 @@
   loadouts:
   - FlowerWreath
   - Hairflower
+  - Headphones
   - PlushieLizard
   - PlushieSpaceLizard
-  - PlushieSharkBlue
-  - PlushieSharkPink
-  - PlushieSharkGrey
   - Lighter
   - FlippoLighter
   - CigPackGreen
@@ -19,6 +17,22 @@
   - CigPackBlue
   - CigPackBlack
   - CigarCase
+
+- type: loadoutGroup
+  id: Sharks
+  name: loadout-group-sharks
+  minLimit: 0
+  maxLimit: 2
+  loadouts:
+  - PlushieSharkBlue
+  - PlushieSharkPink
+  - PlushieSharkGrey
+  - PlushieSharkCommand
+  - PlushieSharkMedical
+  - PlushieSharkScience
+  - PlushieSharkEngineering
+  - PlushieSharkSecurity
+  - PlushieSharkCargo
 
 - type: loadoutGroup
   id: Pins
@@ -37,6 +51,30 @@
   - ClothingNeckPansexualPin
   - ClothingNeckTransPin
   - ClothingNeckAutismPin
+
+- type: loadoutGroup
+  id: Towels
+  name: loadout-group-towels
+  minLimit: 0
+  maxLimit: 1
+  loadouts:
+  - TowelColorBlack
+  - TowelColorDarkBlue
+  - TowelColorDarkGreen
+  - TowelColorGold
+  - TowelColorGray
+  - TowelColorGreen
+  - TowelColorLightBlue
+  - TowelColorLightBrown
+  - TowelColorMaroon
+  - TowelColorMime
+  - TowelColorOrange
+  - TowelColorPurple
+  - TowelColorRed
+  - TowelColorSilver
+  - TowelColorWhite
+  - TowelColorYellow
+  - TowelColorNT
 
 - type: loadoutGroup
   id: Glasses
@@ -615,7 +653,6 @@
   minLimit: 0
   loadouts:
   - CargoTechnicianHead
-  - CargoTechnicianHeadMail # Goob/DeltaV - Mail
 
 - type: loadoutGroup
   id: CargoTechnicianJumpsuit
@@ -623,8 +660,6 @@
   loadouts:
   - CargoTechnicianJumpsuit
   - CargoTechnicianJumpskirt
-  - CargoTechnicianJumpsuitMail # Goob/DeltaV - Mail
-  - CargoTechnicianJumpskirtMail # Goob/DeltaV - Mail
 
 - type: loadoutGroup
   id: CargoTechnicianBackpack
@@ -639,8 +674,7 @@
   name: loadout-group-cargo-technician-outerclothing
   minLimit: 0
   loadouts:
-  - CargoTechnicianWintercoat
-  - CargoTechnicianWintercoatMail # Goob/DeltaV - Mail
+  - CargoTechnicianWintercoat # Goob/DeltaV - Mail
 
 - type: loadoutGroup
   id: CargoTechnicianShoes
@@ -959,6 +993,7 @@
   loadouts:
   - HeadofSecurityCloak
   - HeadofSecurityMantle
+  - Bodycam # Goobstation - Body cameras
 
 - type: loadoutGroup
   id: HeadofSecurityOuterClothing
@@ -966,7 +1001,6 @@
   loadouts:
   - HeadofSecurityCoat
   - HeadofSecurityWinterCoat
-  - Bodycam # Goobstation - Body cameras
 
 - type: loadoutGroup
   id: WardenHead
@@ -989,7 +1023,6 @@
   loadouts:
   - WardenCoat
   - WardenArmoredWinterCoat
-  - Bodycam # Goobstation - Body cameras
 
 - type: loadoutGroup
   id: SecurityHead
@@ -997,6 +1030,7 @@
   minLimit: 0
   loadouts:
   - SecurityHelmet
+  - SecurityHelmetAlt # Goobstation
   - SecurityBeret
   - SecurityHat
   - TrooperHat
@@ -1035,7 +1069,6 @@
   - ArmorVest
   - ArmorVestSlim
   - SecurityOfficerWintercoat
-  - Bodycam # Goobstation - Body cameras
 
 - type: loadoutGroup
   id: SecurityShoes
@@ -1065,6 +1098,7 @@
   minLimit: 0
   loadouts:
   - DetectiveTie
+  - Bodycam # Goobstation - Body cameras
 
 - type: loadoutGroup
   id: DetectiveJumpsuit
@@ -1082,7 +1116,6 @@
   loadouts:
   - DetectiveArmorVest
   - DetectiveCoat
-  - Bodycam # Goobstation - Body cameras
   - DetectiveCoatGrey
 
 - type: loadoutGroup

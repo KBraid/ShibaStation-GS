@@ -18,6 +18,12 @@
   - External # goobstation
   extendedAccess:
   - Chemistry
+  - Research # ShibaStation - Added Research to Paramedic access
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: SurgerySpeedModifier
+      SpeedModifier: 1.75
 
 - type: startingGear
   id: ParamedicGear

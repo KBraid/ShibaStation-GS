@@ -10,6 +10,7 @@
     - id: ClericalError
     - id: CockroachMigration
     - id: GasLeak
+    # - id: GreytideVirus # ShibaStation - Disabled; tiders already have plenty of other ways to get into places.
     - id: IonStorm # its calm like 90% of the time smh
     - id: KudzuGrowth
     - id: MassHallucinations
@@ -35,6 +36,9 @@
     - id: RevenantSpawn
     - id: SleeperAgents
     - id: ZombieOutbreak
+    - id: LoneOpsSpawn
+    - id: DerelictCyborgSpawn
+    - id: BlobSpawn # Goobstation - Blob
 
 - type: entity
   id: BaseStationEvent
@@ -74,8 +78,9 @@
     startAnnouncementColor: "#18abf5"
     startAudio:
       path: /Audio/Announcements/announce.ogg
-    weight: 8
+    weight: 5 # ShibaStation - Reduced from 8 to 5
     duration: 35
+    reoccurrenceDelay: 30 # ShibaStation - Anomalies now can only happen after 30 minutes since the last one.
   - type: AnomalySpawnRule
 
 - type: entity
@@ -90,8 +95,9 @@
     startAnnouncementColor: "#18abf5"
     startAudio:
       path: /Audio/Announcements/announce.ogg
-    weight: 8
+    weight: 6 # ShibaStation - Reduced from 8 to 6
     duration: 35
+    reoccurrenceDelay: 15 # ShibaStation - Artifacts now can only happen after 15 minutes since the last one.
   - type: BluespaceArtifactRule
 
 - type: entity
@@ -103,6 +109,7 @@
     reoccurrenceDelay: 5
     earliestStart: 1
     duration: 1
+    maxOccurrences: 10 # ShibaStation - Long shifts result in like two thirds of all lockers being bluespaced. It's cringe.
   - type: BluespaceLockerRule
 
 - type: entity
@@ -155,10 +162,10 @@
   id: DragonSpawn
   components:
   - type: StationEvent
-    weight: 6.5
-    earliestStart: 40
+    weight: 2
+    earliestStart: 75
     reoccurrenceDelay: 20
-    minimumPlayers: 20
+    minimumPlayers: 60
     duration: null
   - type: SpaceSpawnRule
     spawnDistance: 0
@@ -186,7 +193,7 @@
   - type: StationEvent
     weight: 6
     duration: null
-    earliestStart: 30
+    earliestStart: 45
     reoccurrenceDelay: 20
     minimumPlayers: 30
   - type: SpaceSpawnRule
@@ -233,9 +240,9 @@
   id: RevenantSpawn
   components:
   - type: StationEvent
-    weight: 7.5
+    weight: 3.5
     duration: 1
-    earliestStart: 45
+    earliestStart: 30
     minimumPlayers: 20
   - type: RandomSpawnRule
     prototype: MobRevenant
@@ -259,7 +266,8 @@
     startAudio:
       path: /Audio/Announcements/attention.ogg
     endAnnouncement: station-event-gas-leak-end-announcement
-    weight: 8
+    weight: 6 # ShibaStation - Reduced from 8 to 6
+    reoccurrenceDelay: 10 # ShibaStation - Gas leaks now can only happen after 10 minutes since the last one.
   - type: GasLeakRule
 
 - type: entity
@@ -269,7 +277,7 @@
   - type: StationEvent
     earliestStart: 15
     minimumPlayers: 15
-    weight: 7
+    weight: 5 # ShibaStation - Reduced from 7 to 5
     duration: 240
   - type: KudzuGrowthRule
 
@@ -278,15 +286,16 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    weight: 5
+    weight: 3 # ShibaStation - Reduced from 5 to 3
     startAnnouncement: station-event-power-grid-check-start-announcement
     endAnnouncement: station-event-power-grid-check-end-announcement
     startAudio:
       path: /Audio/Announcements/power_off.ogg
       params:
         volume: -4
-    duration: 60
-    maxDuration: 120
+    duration: 30 # ShibaStation - Reduced from 60 to 30
+    maxDuration: 90 # ShibaStation - Reduced from 120 to 90
+    reoccurrenceDelay: 15 # ShibaStation - Power grid checks now can only happen after 15 minutes since the last one.
   - type: PowerGridCheckRule
 
 - type: entity
@@ -294,13 +303,14 @@
   id: SolarFlare
   components:
   - type: StationEvent
-    weight: 8
+    weight: 4 # ShibaStation - Reduced from 8 to 4
     startAnnouncement: station-event-solar-flare-start-announcement
     endAnnouncement: station-event-solar-flare-end-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
     duration: 120
     maxDuration: 240
+    reoccurrenceDelay: 20 # ShibaStation - Solar flares now can only happen after 20 minutes since the last one.
   - type: SolarFlareRule
     onlyJamHeadsets: true
     affectedChannels:
@@ -326,9 +336,10 @@
     startAudio:
       path: /Audio/Announcements/attention.ogg
     earliestStart: 15
-    minimumPlayers: 15
-    weight: 5
+    minimumPlayers: 4 # ShibaStation - Reduced from 15 to 4
+    weight: 3 # ShibaStation - Reduced from 5 to 3
     duration: 60
+    reoccurrenceDelay: 30 # ShibaStation - Vent clogs now can only happen after 20 minutes since the last one.
   - type: VentClogRule
 
 - type: entity
@@ -340,9 +351,10 @@
     startAudio:
       path: /Audio/Announcements/aliens.ogg
     earliestStart: 20
-    minimumPlayers: 15
-    weight: 5
+    minimumPlayers: 14 # ShibaStation - Reduced from 15 to 8
+    weight: 1 # GoobStation: was 5, vent critters bad
     duration: 60
+    reoccurrenceDelay: 20 # ShibaStation - Vent critters now can only happen after 20 minutes since the last one.
   - type: VentCrittersRule
     entries:
     - id: MobAdultSlimesBlueAngry
@@ -361,9 +373,10 @@
     startAudio:
       path: /Audio/Announcements/attention.ogg
     earliestStart: 20
-    minimumPlayers: 15
-    weight: 5
+    minimumPlayers: 12 # ShibaStation - Reduced from 15 to 8
+    weight: 1 # GoobStation: was 5, critters because bad
     duration: 60
+    reoccurrenceDelay: 20 # ShibaStation - Vent critters now can only happen after 20 minutes since the last one.
   - type: VentCrittersRule
     entries:
     - id: MobPurpleSnake
@@ -382,9 +395,10 @@
     startAudio:
       path: /Audio/Announcements/aliens.ogg
     earliestStart: 20
-    minimumPlayers: 15
-    weight: 5
+    minimumPlayers: 8 # ShibaStation - Reduced from 15 to 8
+    weight: 1 # GoobStation: was 1, vent critters bad
     duration: 60
+    reoccurrenceDelay: 20 # ShibaStation - Vent critters now can only happen after 20 minutes since the last one.
   - type: VentCrittersRule
     entries:
     - id: MobGiantSpiderAngry
@@ -399,9 +413,10 @@
     startAudio:
       path: /Audio/Announcements/aliens.ogg
     earliestStart: 20
-    minimumPlayers: 20
-    weight: 1.5
+    minimumPlayers: 12 # ShibaStation - Reduced from 20 to 12
+    weight: 0.5 # ShibaStation - Back to 0.5
     duration: 60
+    reoccurrenceDelay: 20 # ShibaStation - Vent critters now can only happen after 20 minutes since the last one.
   - type: VentCrittersRule
     entries:
     - id: MobClownSpider
@@ -451,12 +466,12 @@
     duration: 1
   - type: RuleGrids
   - type: LoadMapRule
-    preloadedGrid: ShuttleStriker
-  - type: NukeopsRule # goob edit
+    mapPath: /Maps/Shuttles/ShuttleEvent/striker.yml
+  - type: NukeopsRule
     roundEndBehavior: Nothing
   - type: AntagSelection
     definitions:
-    - spawnerPrototype: SpawnPointNukeopsCommander
+    - spawnerPrototype: SpawnPointLoneNukeOperative
       min: 1
       max: 1
       pickPlayer: false
@@ -466,7 +481,9 @@
       components:
       - type: NukeOperative
       - type: RandomMetadata
-        nameSegments: [names_death_commando] # goob edit
+        nameSegments:
+        - SyndicateNamesPrefix
+        - SyndicateNamesNormal
       - type: NpcFactionMember
         factions:
         - Syndicate
@@ -524,6 +541,7 @@
   - type: StationEvent
     weight: 8
     reoccurrenceDelay: 20
+    minimumPlayers: 10 # ShibaStation - Ion storms tend to give out free shitter tickets, and at low pop it's cringe. This better meshes with escalating danger in line with population.
     duration: 1
   - type: IonStormRule
 
@@ -537,3 +555,45 @@
     maxOccurrences: 1 # this event has diminishing returns on interesting-ness, so we cap it
     weight: 5
   - type: MobReplacementRule
+
+- type: entity
+  id: GreytideVirus
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    weight: 5
+    minimumPlayers: 25
+    reoccurrenceDelay: 20
+  - type: GreytideVirusRule
+    accessGroups:
+    - Cargo
+    - Command
+    - Engineering
+    - Research
+    - Security
+    - Service
+    blacklist:
+    - External # don't space everything
+
+- type: entity
+  parent: BaseGameRule
+  id: DerelictCyborgSpawn
+  components:
+  - type: StationEvent
+    weight: 5
+    earliestStart: 15
+    reoccurrenceDelay: 20
+    minimumPlayers: 8 # ShibaStation - Increased from 4 to 8
+    duration: null
+  - type: SpaceSpawnRule
+    spawnDistance: 0
+  - type: AntagSpawner
+    prototype: PlayerBorgDerelict
+  - type: AntagSelection
+    definitions:
+    - spawnerPrototype: SpawnPointGhostDerelictCyborg
+      min: 1
+      max: 1
+      pickPlayer: false

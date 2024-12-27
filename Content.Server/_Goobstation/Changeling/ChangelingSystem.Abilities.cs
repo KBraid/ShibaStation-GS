@@ -252,10 +252,7 @@ public sealed partial class ChangelingSystem : EntitySystem
             return;
 
         // heal of everything
-        _damage.SetAllDamage(uid, damageable, 0);
-        _mobState.ChangeMobState(uid, MobState.Alive);
-        _blood.TryModifyBloodLevel(uid, 1000);
-        _blood.TryModifyBleedAmount(uid, -1000);
+        _rejuv.PerformRejuvenate(uid);
 
         _popup.PopupEntity(Loc.GetString("changeling-stasis-exit"), uid, uid);
 
@@ -493,9 +490,7 @@ public sealed partial class ChangelingSystem : EntitySystem
 
         var reagents = new List<(string, FixedPoint2)>()
         {
-            ("Diphenhydramine", 5f),
-            ("Arithrazine", 5f),
-            ("Ethylredoxrazine", 5f)
+            ("LingPanacea", 10f),
         };
         if (TryInjectReagents(uid, reagents))
             _popup.PopupEntity(Loc.GetString("changeling-panacea"), uid, uid);
@@ -588,8 +583,7 @@ public sealed partial class ChangelingSystem : EntitySystem
 
         var reagents = new List<(string, FixedPoint2)>()
         {
-            ("Ichor", 10f),
-            ("TranexamicAcid", 5f)
+            ("LingFleshmend", 10f),
         };
         if (TryInjectReagents(uid, reagents))
             _popup.PopupEntity(Loc.GetString("changeling-fleshmend"), uid, uid);

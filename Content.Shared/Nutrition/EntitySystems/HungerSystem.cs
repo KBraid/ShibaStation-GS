@@ -11,6 +11,8 @@ using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
+using Content.Shared._EinsteinEngines.Flight;
+
 namespace Content.Shared.Nutrition.EntitySystems;
 
 public sealed class HungerSystem : EntitySystem
@@ -24,6 +26,8 @@ public sealed class HungerSystem : EntitySystem
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
     [Dependency] private readonly SharedJetpackSystem _jetpack = default!;
 
+    [Dependency] private readonly SharedFlightSystem _flightSystem = default!;
+
     [ValidatePrototypeId<SatiationIconPrototype>]
     private const string HungerIconOverfedId = "HungerIconOverfed";
 
@@ -33,17 +37,9 @@ public sealed class HungerSystem : EntitySystem
     [ValidatePrototypeId<SatiationIconPrototype>]
     private const string HungerIconStarvingId = "HungerIconStarving";
 
-    private SatiationIconPrototype? _hungerIconOverfed;
-    private SatiationIconPrototype? _hungerIconPeckish;
-    private SatiationIconPrototype? _hungerIconStarving;
-
     public override void Initialize()
     {
         base.Initialize();
-
-        DebugTools.Assert(_prototype.TryIndex(HungerIconOverfedId, out _hungerIconOverfed) &&
-                          _prototype.TryIndex(HungerIconPeckishId, out _hungerIconPeckish) &&
-                          _prototype.TryIndex(HungerIconStarvingId, out _hungerIconStarving));
 
         SubscribeLocalEvent<HungerComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<HungerComponent, ComponentShutdown>(OnShutdown);
@@ -221,13 +217,13 @@ public sealed class HungerSystem : EntitySystem
         switch (component.CurrentThreshold)
         {
             case HungerThreshold.Overfed:
-                prototype = _hungerIconOverfed;
+                _prototype.TryIndex(HungerIconOverfedId, out prototype);
                 break;
             case HungerThreshold.Peckish:
-                prototype = _hungerIconPeckish;
+                _prototype.TryIndex(HungerIconPeckishId, out prototype);
                 break;
             case HungerThreshold.Starving:
-                prototype = _hungerIconStarving;
+                _prototype.TryIndex(HungerIconStarvingId, out prototype);
                 break;
             default:
                 prototype = null;
@@ -235,6 +231,22 @@ public sealed class HungerSystem : EntitySystem
         }
 
         return prototype != null;
+    }
+
+    private void UpdateFlightHunger(EntityUid uid, HungerComponent hunger)
+    {
+        // Check if entity has flight and if it's active
+        if (!TryComp<FlightComponent>(uid, out var flight) || !flight.On)
+            return;
+
+        // Reduce hunger by flight drain rate
+        ModifyHunger(uid, -flight.HungerDrainRate, hunger);
+
+        // Disable flight if too hungry
+        if (IsHungerBelowState(uid, HungerThreshold.Peckish))
+        {
+            _flightSystem.ToggleActive(uid, false, flight);
+        }
     }
 
     public override void Update(float frameTime)
@@ -247,6 +259,9 @@ public sealed class HungerSystem : EntitySystem
             if (_timing.CurTime < hunger.NextUpdateTime)
                 continue;
             hunger.NextUpdateTime = _timing.CurTime + hunger.UpdateRate;
+
+            // Check flight hunger before modifying
+            UpdateFlightHunger(uid, hunger);
 
             ModifyHunger(uid, -hunger.ActualDecayRate, hunger);
             DoContinuousHungerEffects(uid, hunger);

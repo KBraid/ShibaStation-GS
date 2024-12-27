@@ -18,6 +18,9 @@
   - Service
   - External
   - Cryogenics
+  extendedAccess:
+  - Medical # ShibaStation - Added Medical to Security access
+  - Chemistry # ShibaStation - Added Chemistry to Security access
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -26,9 +29,10 @@
   id: SecurityOfficerGear
   equipment:
     eyes: ClothingEyesGlassesSecurity
-    ears: ClothingHeadsetSecurity
+    ears: ClothingHeadsetAltSecurityRegular # Goobstation
     pocket1: WeaponPistolMk58
   storage:
     back:
     - Flash
     - MagazinePistol
+    - SecHypo # Goobstation

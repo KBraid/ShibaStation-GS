@@ -19,6 +19,9 @@
   - Detective
   - Cryogenics
   - External
+  extendedAccess:
+  - Medical # ShibaStation - Added Medical to Detective access
+  - Chemistry # ShibaStation - Added Chemistry to Detective access
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -28,10 +31,12 @@
   equipment:
     eyes: ClothingEyesGlassesSecurity
     id: DetectivePDA
-    ears: ClothingHeadsetSecurity
+    gloves: ClothingHandsGlovesForensic
+    ears: ClothingHeadsetAltSecurityRegular # Goobstation
     belt: ClothingBeltHolsterFilled
   storage:
     back:
     - Flash
     - ForensicPad
     - ForensicScanner
+    - SecHypo # Goobstation

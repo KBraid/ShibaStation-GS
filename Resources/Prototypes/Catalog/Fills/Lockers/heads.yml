@@ -126,7 +126,7 @@
       # Yes they do fuck you.
     - id: ClothingBackpackIan
       prob: 0.5
-    - id: ClothingHeadsetCommand
+    - id: ClothingHeadsetAltCommand # Goobstation
     - id: ClothingNeckGoldmedal
     - id: DoorRemoteService
     - id: HoPIDCard
@@ -161,8 +161,8 @@
     - id: ClothingHandsGlovesColorYellow
     - id: ClothingHeadsetAltEngineering
     - id: DoorRemoteEngineering
-    - id: RCD
-    - id: RCDAmmo
+    - id: RCDRecharging # ShibaStation - Added experimental RCD and experimental RPD to CE locker
+    - id: RPDRecharging # ShibaStation - Added experimental RCD and experimental RPD to CE locker
     - id: RubberStampCE
     - id: BaseHandheldStationMapPowerCe
 # Hardsuit table, used for suit storage as well
@@ -228,6 +228,10 @@
     - id: CloningConsoleComputerCircuitboard
     - id: BiomassReclaimerMachineCircuitboard
     - id: MedTekCartridge
+    - id: RapidSyringeGun
+    - id: BoxSyringePax
+    # Shitmed
+    - id: MedicalBiofabMachineBoard
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -270,6 +274,7 @@
   id: LockerFillResearchDirectorNoHardsuit
   table: !type:AllSelector
     children:
+    - id: Intellicard
     - id: BoxEncryptionKeyScience
     - id: CircuitImprinterMachineCircuitboard
     - id: ClothingBeltUtilityFilled
@@ -281,6 +286,7 @@
     - id: RubberStampRd
     - id: EncryptionKeyBinary # goobstation - readd the cool binary channel access. fuck you.
     - id: AnomalyLocator # GoobStation - adding anomaly locator to the RD locker to reduce the amount of anoms that crit
+    - id: SciScanCartridge # Shibastation - adding SciScan cartridge to locker, ala CMO and MedTek Cartridge.
     - id: CigarCase
       prob: 0.15 # GoobStation - RD needs cigs for uhh... science...
 

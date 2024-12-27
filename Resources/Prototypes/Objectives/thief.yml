@@ -140,6 +140,20 @@
   - type: Objective
     difficulty: 0.5 # just for fun, collectings LAMP on Moth
 
+- type: entity  # Goobstation
+  parent: BaseThiefStealCollectionObjective
+  id: BatteryStealCollectionObjective
+  components:
+  - type: SpeciesRequirement
+    allowedSpecies:
+    - IPC
+  - type: StealCondition
+    stealGroup: Battery
+    minCollectionSize: 5
+    maxCollectionSize: 30
+  - type: Objective
+    difficulty: 0.5 # just for fun, collectings Battery for ipc
+
 # steal item
 
 - type: entity                                      #Security subgroup
@@ -236,6 +250,17 @@
     stealGroup: AmePartFlatpack
   - type: Objective
     difficulty: 1
+
+- type: entity # ShibaStation - steal the new experimental RCD or RPD!
+  parent: BaseThiefStealObjective
+  id: CeToolStealObjective
+  components:
+  - type: NotJobRequirement
+    job: StationEngineer
+  - type: StealCondition
+    stealGroup: CeTool
+  - type: Objective
+    difficulty: 1.4
 
 - type: entity                                      #Cargo subgroup
   parent: BaseThiefStealObjective

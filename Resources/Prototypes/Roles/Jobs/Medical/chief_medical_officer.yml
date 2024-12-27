@@ -18,7 +18,6 @@
   weight: 10
   startingGear: CMOGear
   icon: "JobIconChiefMedicalOfficer"
-  requireAdminNotify: true
   supervisors: job-supervisors-captain
   canBeAntag: false
   access:
@@ -30,19 +29,27 @@
   - Brig
   - Cryogenics
   - External # goobstation
+  extendedAccess:
+  - Research # ShibaStation - Added Research to CMO access
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
+  # Shitmed Change
+  - !type:AddComponentSpecial
+    components:
+    - type: SurgerySpeedModifier
+      SpeedModifier: 2.5
 
 - type: startingGear
   id: CMOGear
   equipment:
     id: CMOPDA
-    ears: ClothingHeadsetCMO
-    belt: ClothingBeltMedicalFilled
+    ears: ClothingHeadsetAltMedical # Goobstation
+    belt: ClothingBeltMilitaryWebbingCMOFilled # Goobstation
   storage:
     back:
     - Flash
+    - TelescopicBaton # Goobstation

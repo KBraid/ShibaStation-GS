@@ -1,40 +1,3 @@
-# Timers
-- type: loadoutEffectGroup
-  id: Command
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:DepartmentTimeRequirement
-      department: Command
-      time: 14400 # 4 hrs
-
-- type: loadoutEffectGroup
-  id: Medical
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:DepartmentTimeRequirement
-      department: Medical
-      time: 14400 # 4 hrs
-
-- type: loadoutEffectGroup
-  id: Science
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:DepartmentTimeRequirement
-      department: Science
-      time: 14400 # 4 hrs
-
-- type: loadoutEffectGroup
-  id: Engineering
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:DepartmentTimeRequirement
-      department: Engineering
-      time: 14400 # 4 hrs
-
 # Flowers
 - type: loadout
   id: FlowerWreath
@@ -47,6 +10,13 @@
   storage:
     back:
     - ClothingHeadHatHairflower
+
+# Headphones
+- type: loadout
+  id: Headphones
+  storage:
+    back:
+    - ClothingNeckHeadphones
 
 # Plushies
 - type: loadout
@@ -63,30 +33,93 @@
 
 - type: loadout
   id: PlushieSharkBlue
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: Medical
   storage:
     back:
     - PlushieSharkBlue
 
 - type: loadout
   id: PlushieSharkPink
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: Engineering
   storage:
     back:
     - PlushieSharkPink
 
 - type: loadout
   id: PlushieSharkGrey
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: Science
   storage:
     back:
     - PlushieSharkGrey
+
+- type: loadout
+  id: PlushieSharkCommand
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Command
+      time: 144000 # 40 hrs
+  storage:
+    back:
+    - PlushieSharkCommand
+
+- type: loadout
+  id: PlushieSharkMedical
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Medical
+      time: 144000 # 40 hrs
+  storage:
+    back:
+    - PlushieSharkMedical
+
+- type: loadout
+  id: PlushieSharkScience
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Science
+      time: 144000 # 40 hrs
+  storage:
+    back:
+    - PlushieSharkScience
+
+- type: loadout
+  id: PlushieSharkEngineering
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Engineering
+      time: 144000 # 40 hrs
+  storage:
+    back:
+    - PlushieSharkEngineering
+
+- type: loadout
+  id: PlushieSharkSecurity
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 144000 # 40 hrs
+  storage:
+    back:
+    - PlushieSharkSecurity
+
+- type: loadout
+  id: PlushieSharkCargo
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Cargo
+      time: 144000 # 40 hrs
+  storage:
+    back:
+    - PlushieSharkCargo
 
 # Smokeables
 - type: loadout
@@ -98,8 +131,11 @@
 - type: loadout
   id: FlippoLighter
   effects:
-  - !type:GroupLoadoutEffect
-    proto: Command
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Command
+      time: 14400 # 4 hrs
   storage:
     back:
     - FlippoLighter
@@ -131,8 +167,11 @@
 - type: loadout
   id: CigarCase
   effects:
-  - !type:GroupLoadoutEffect
-    proto: Command
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Command
+      time: 14400 # 4 hrs
   storage:
     back:
     - CigarCase
@@ -203,3 +242,205 @@
   storage:
     back:
     - ClothingNeckAutismPin
+
+# Towels
+- type: loadout
+  id: TowelColorWhite
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:OverallPlaytimeRequirement
+      time: 72000 # 20 hr
+  storage:
+    back:
+    - TowelColorWhite
+
+- type: loadout
+  id: TowelColorSilver
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:OverallPlaytimeRequirement
+      time: 216000 # 60 hr
+  storage:
+    back:
+    - TowelColorSilver
+
+- type: loadout
+  id: TowelColorGold
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:OverallPlaytimeRequirement
+      time: 432000 # 120 hr
+  storage:
+    back:
+    - TowelColorGold
+
+- type: loadout
+  id: TowelColorLightBrown
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Cargo
+      time: 144000 # 40 hrs
+  storage:
+    back:
+    - TowelColorLightBrown
+
+- type: loadout
+  id: TowelColorGreen
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Civilian
+      time: 144000 # 40 hrs
+  storage:
+    back:
+    - TowelColorGreen
+
+- type: loadout
+  id: TowelColorDarkBlue
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Command
+      time: 144000 # 40 hrs
+  storage:
+    back:
+    - TowelColorDarkBlue
+
+- type: loadout
+  id: TowelColorOrange
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Engineering
+      time: 144000 # 40 hrs
+  storage:
+    back:
+    - TowelColorOrange
+
+- type: loadout
+  id: TowelColorLightBlue
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Medical
+      time: 144000 # 40 hrs
+  storage:
+    back:
+    - TowelColorLightBlue
+
+- type: loadout
+  id: TowelColorPurple
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Science
+      time: 144000 # 40 hrs
+  storage:
+    back:
+    - TowelColorPurple
+
+- type: loadout
+  id: TowelColorRed
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Security
+      time: 144000 # 40 hrs
+  storage:
+    back:
+    - TowelColorRed
+
+- type: loadout
+  id: TowelColorGray
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobPassenger
+      time: 144000 # 40 hrs
+  storage:
+    back:
+    - TowelColorGray
+
+- type: loadout
+  id: TowelColorBlack
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobChaplain
+      time: 144000 # 40 hrs
+  storage:
+    back:
+    - TowelColorBlack
+
+- type: loadout
+  id: TowelColorDarkGreen
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobLibrarian
+      time: 144000 # 40 hrs
+  storage:
+    back:
+    - TowelColorDarkGreen
+
+- type: loadout
+  id: TowelColorMaroon
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobLawyer
+      time: 144000 # 40 hrs
+  storage:
+    back:
+    - TowelColorMaroon
+
+- type: loadout
+  id: TowelColorYellow
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobClown
+      time: 144000 # 40 hrs
+  storage:
+    back:
+    - TowelColorYellow
+
+- type: loadout
+  id: TowelColorMime
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobMime
+      time: 144000 # 40 hrs
+  storage:
+    back:
+    - TowelColorMime
+
+- type: loadout
+  id: TowelColorNT
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobNanotrasenRepresentative
+      time: 144000 # 40 hrs
+  storage:
+    back:
+    - TowelColorNT

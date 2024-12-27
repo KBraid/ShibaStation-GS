@@ -1,6 +1,7 @@
 - type: roleLoadout
   id: JobNanotrasenRepresentative
   groups:
+  - GroupTankHarness
   - NanotrasenRepresentativeHead
   - NanotrasenRepresentativeJumpsuit
   - NanotrasenRepresentativeBackpack
@@ -8,6 +9,8 @@
   - NanotrasenRepresentativeBelt
   - Glasses
   - Trinkets
+  - Sharks
+  - Towels
   - Pins
   - GroupSpeciesBreathTool
   - Survival
@@ -17,9 +20,12 @@
   groups:
   - BlueshieldOfficerHead
   - BlueshieldOfficerJumpsuit
+  - BlueshieldOfficerBackpack
   - BlueshieldOfficerOuter
   - BlueshieldOfficerNeck
   - Trinkets
+  - Sharks
+  - Towels
   - Pins
   - GroupSpeciesBreathTool
-  - Survival
+  - SurvivalSecurity

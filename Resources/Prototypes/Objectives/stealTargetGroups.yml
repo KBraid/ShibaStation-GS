@@ -142,6 +142,13 @@
     sprite: Objects/Tools/lantern.rsi
     state: lantern
 
+- type: stealTargetGroup #Goobstation
+  id: Battery
+  name: steal-target-groups-battery
+  sprite:
+    sprite: Objects/Power/power_cells.rsi
+    state: medium
+
 # Thief single item
 
 - type: stealTargetGroup
@@ -213,6 +220,13 @@
   sprite:
     sprite: Objects/Devices/flatpack.rsi
     state: ame-part
+
+- type: stealTargetGroup # ShibaStation - For experimental RCD and RPD steal targets
+  id: CeTool
+  name: steal-target-groups-ce-tool
+  sprite:
+    sprite: Objects/Tools/rcd.rsi
+    state: icon
 
 - type: stealTargetGroup
   id: SalvageExpeditionsComputerCircuitboard

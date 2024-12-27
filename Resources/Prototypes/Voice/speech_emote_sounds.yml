@@ -96,6 +96,16 @@
       collection: MaleCry
     Weh:
       collection: Weh
+    Chirp:
+      collection: ReptilianChirps
+    Trill:
+      collection: ReptilianTrills
+    Rattle:
+      collection: ReptilianRattles
+    Sigh:
+      collection: ReptilianSighs
+    Hiss:
+      collection: ReptilianHisses
     Gasp:
       collection: MaleGasp
     DefaultDeathgasp:
@@ -118,6 +128,16 @@
       collection: FemaleCry
     Weh:
       collection: Weh
+    Chirp:
+      collection: ReptilianChirps
+    Trill:
+      collection: ReptilianTrills
+    Rattle:
+      collection: ReptilianRattles
+    Sigh:
+      collection: ReptilianSighs
+    Hiss:
+      collection: ReptilianHisses
     Gasp:
       collection: FemaleGasp
     DefaultDeathgasp:
@@ -359,6 +379,8 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MothDeathGasp
+    Flap: # Goobstation - Add flap to moths.
+      path: /Audio/_Goobstation/Voice/Moth/moth_flap.ogg
 
 - type: emoteSounds
   id: UnisexSilicon
@@ -424,6 +446,22 @@
       path: /Audio/Voice/Diona/diona_salute.ogg
       params:
        volume: -5
+
+- type: emoteSounds
+  id: ReptilianBodyEmotes
+  sounds:
+    Thump:
+      path: /Audio/Voice/Reptilian/reptilian_tailthump.ogg
+      params:
+        variation: 0.125
+    Clap:
+      collection: Claps
+    Snap:
+      collection: Snaps
+      params:
+        volume: -6
+    Salute:
+      collection: Salutes
 
 # mobs
 - type: emoteSounds

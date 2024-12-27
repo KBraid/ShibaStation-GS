@@ -15,6 +15,8 @@
     - Multitool
   - type: Prying
     enabled: false
+  - type: UseDelay # For insta prying
+    delay: 1
   - type: Tool
     qualities:
       - Screwing
@@ -87,7 +89,7 @@
   name: handheld fax
   parent: BaseItem
   id: HandheldFax
-  description: A tool that can send ton of paper on Centcomm fax.
+  description: A tool that can send ton of paper on CentComm fax.
   components:
   - type: Item
     size: Huge

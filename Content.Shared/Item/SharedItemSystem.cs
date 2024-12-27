@@ -2,8 +2,10 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Verbs;
 using Content.Shared.Examine;
+using Content.Shared.Inventory;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Storage;
+using Content.Shared.Storage.EntitySystems;
 using JetBrains.Annotations;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
@@ -14,6 +16,9 @@ namespace Content.Shared.Item;
 
 public abstract class SharedItemSystem : EntitySystem
 {
+    [Dependency] private readonly SharedTransformSystem _transform = default!; // Goobstation
+    [Dependency] private readonly SharedStorageSystem _storage = default!; // Goobstation
+    [Dependency] private readonly InventorySystem _inventory = default!; // Goobstation
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private   readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] protected readonly SharedContainerSystem Container = default!;
@@ -242,6 +247,33 @@ public abstract class SharedItemSystem : EntitySystem
             if (itemToggleSize.DeactivatedSize != null)
             {
                 SetSize(uid, (ProtoId<ItemSizePrototype>) itemToggleSize.DeactivatedSize, item);
+            }
+        }
+
+        if (Container.TryGetContainingContainer((uid, null, null), out var container)) // Goobstation - reinsert item in storage because size changed
+        {
+            if (TryComp(container.Owner, out StorageComponent? storage))
+            {
+                _transform.AttachToGridOrMap(uid);
+                if (!_storage.Insert(container.Owner, uid, out _, null, storage, false))
+                    _handsSystem.PickupOrDrop(args.User, uid, animate: false);
+            }
+            else if (TryComp(container.Owner, out InventoryComponent? inventory))
+            {
+                var fitsInPockets = GetSizePrototype(item.Size) <= GetSizePrototype(InventorySystem.PocketableItemSize);
+                if (!fitsInPockets)
+                {
+                    var enumerator = _inventory.GetSlotEnumerator(container.Owner, SlotFlags.POCKET);
+                    while (enumerator.NextItem(out var slotItem))
+                    {
+                        if (slotItem != uid)
+                            continue;
+
+                        _transform.AttachToGridOrMap(uid);
+                        _handsSystem.PickupOrDrop(args.User, uid, animate: false);
+                        break;
+                    }
+                }
             }
         }
 
