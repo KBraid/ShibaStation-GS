@@ -32,7 +32,6 @@ using Robust.Server.GameObjects;
 using Robust.Server.Maps;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
-using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
@@ -93,6 +92,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         SubscribeLocalEvent<EmergencyShuttleComponent, FTLCompletedEvent>(OnEmergencyFTLComplete);
         SubscribeNetworkEvent<EmergencyShuttleRequestPositionMessage>(OnShuttleRequestPosition);
         InitializeEmergencyConsole();
+        InitializeEmag(); // Goobstation
     }
 
     private void OnRoundStart(RoundStartingEvent ev)
@@ -392,7 +392,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
 
         var audioFile = result.ResultType == ShuttleDockResultType.NoDock
             ? "/Audio/Misc/notice1.ogg"
-            : "/Audio/Announcements/shuttle_dock.ogg";
+            : "/Audio/_ShibaStation/Announcements/evac-docked.ogg";
 
         // TODO: Need filter extensions or something don't blame me.
         _audio.PlayGlobal(audioFile, Filter.Broadcast(), true);

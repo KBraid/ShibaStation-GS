@@ -10,6 +10,8 @@
   - Headphones
   - PlushieLizard
   - PlushieSpaceLizard
+  - CardBoxBlack # GoobStation
+  - CardBoxNanotrasen # GoobStation
   - Lighter
   - FlippoLighter
   - CigPackGreen
@@ -1112,7 +1114,6 @@
 - type: loadoutGroup
   id: DetectiveOuterClothing
   name: loadout-group-detective-outerclothing
-  minLimit: 0
   loadouts:
   - DetectiveArmorVest
   - DetectiveCoat

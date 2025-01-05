@@ -1,5 +1,4 @@
 ﻿using Content.Server._Goobstation.Blob;
-using Content.Shared._Goobstation.Blob.Components;
 using Content.Shared.Mind;
 using Robust.Shared.Audio;
 
@@ -9,7 +8,10 @@ namespace Content.Server.GameTicking.Rules.Components;
 public sealed partial class BlobRuleComponent : Component
 {
     [DataField]
-    public SoundSpecifier? AlertAudio = new SoundPathSpecifier("/Audio/Announcements/outbreak5.ogg");
+    public SoundSpecifier? AlertAudioNuke = new SoundPathSpecifier("/Audio/_ShibaStation/Announcements/blob-crit-nuke.ogg");
+
+    [DataField]
+    public SoundSpecifier? AlertAudioNoNuke = new SoundPathSpecifier("/Audio/_ShibaStation/Announcements/blob-crit-no-nuke.ogg");
 
     [ViewVariables]
     public List<(EntityUid mindId, MindComponent mind)> Blobs = new(); //BlobRoleComponent

@@ -1,6 +1,166 @@
 Entries:
 - author: AstroDogeDX
   changes:
+  - message: Cherrypicked some PRs from Goob upstream that are pending merges; see
+      the Discord for more details!
+    type: Add
+  id: 91
+  time: '2025-01-04T16:08:26.871970'
+- author: AstroDogeDX
+  changes:
+  - message: Multiple adjustments made to Amber Station; see the Discord and PR for
+      more details!
+    type: Tweak
+  id: 90
+  time: '2025-01-04T16:07:57.270529'
+- author: AstroDogeDX
+  changes:
+  - message: Loot bugs are now on the 'Mouse' faction, making them targets of Shiva,
+      Aves and Pun Pun.
+    type: Tweak
+  id: 89
+  time: '2025-01-03T13:06:16.791338'
+- author: AstroDogeDX
+  changes:
+  - message: Loop Station has been removed from rotation. It has several issues that
+      make it unsuitable to play on.
+    type: Remove
+  id: 88
+  time: '2025-01-03T13:07:45.884181'
+- author: AstroDogeDX
+  changes:
+  - message: The Inebriation Recovery Kit has been added to the game. It contains
+      three ethyl medipens, two water bottles and a canister of dylovene pills. It
+      can be found in the Bartender's closet.
+    type: Add
+  id: 87
+  time: '2025-01-03T13:09:18.203822'
+- author: AstroDogeDX
+  changes:
+  - message: The Ethylredoxrazine Medipen has been added to the game.
+    type: Add
+  id: 86
+  time: '2025-01-03T13:08:20.655046'
+- author: AstroDogeDX
+  changes:
+  - message: Salvage Shuttle now has a unique long-range holopad.
+    type: Add
+  id: 85
+  time: '2025-01-02T04:49:08.826934'
+- author: AstroDogeDX
+  changes:
+  - message: Cluster Station now has holopads.
+    type: Tweak
+  id: 84
+  time: '2025-01-02T04:46:15.306774'
+- author: AstroDogeDX
+  changes:
+  - message: Atlas Station has had its disposal chutes fixed and robotics lathe powered.
+    type: Fix
+  id: 83
+  time: '2025-01-02T04:46:48.296771'
+- author: AstroDogeDX
+  changes:
+  - message: Omega Station has a Material Silo and linked lathes now.
+    type: Tweak
+  id: 82
+  time: '2025-01-02T04:47:16.911300'
+- author: AstroDogeDX
+  changes:
+  - message: Packed Station now has a Material Silo and linked lathes.
+    type: Tweak
+  id: 81
+  time: '2025-01-02T04:47:41.715844'
+- author: AstroDogeDX
+  changes:
+  - message: Atlas Station now has holopads.
+    type: Tweak
+  id: 80
+  time: '2025-01-02T04:47:58.812140'
+- author: AstroDogeDX
+  changes:
+  - message: Saltern Station now has holopads.
+    type: Tweak
+  id: 79
+  time: '2025-01-02T04:48:39.145523'
+- author: AstroDogeDX
+  changes:
+  - message: Added the Turbo Cleanbot (admeme) - for when the janitors are on strike
+      and the station is in dire need of a clean!
+    type: Add
+  id: 78
+  time: '2025-01-02T02:08:54.701210'
+- author: AstroDogeDX
+  changes:
+  - message: Pun Pun has been given combat training and pest control advice. He'll
+      now actively seek to defend the bar from hostile threats and keep the mice away!
+    type: Tweak
+  id: 77
+  time: '2025-01-02T02:08:54.701210'
+- author: AstroDogeDX
+  changes:
+  - message: Loop Station is now in low pop rotation. It's spacious but not complex
+      to need 30 minimum players.
+    type: Add
+  id: 76
+  time: '2025-01-02T02:08:54.700212'
+- author: AstroDogeDX
+  changes:
+  - message: All jetpacks now have the ability to be worn in suit storage! Time for
+      epic Security vs Syndicate space battles!
+    type: Tweak
+  id: 75
+  time: '2025-01-02T02:08:54.700212'
+- author: AstroDogeDX
+  changes:
+  - message: All PDAs should now have the NanoChat app; and also fixed the missing
+      Science PDA base that went missing at some point!
+    type: Fix
+  id: 74
+  time: '2024-12-31T11:22:56.006388'
+- author: AstroDogeDX
+  changes:
+  - message: Removed 'miss' from the German accent; so you'll no longer frau your
+      shots.
+    type: Fix
+  id: 73
+  time: '2024-12-31T11:23:35.398332'
+- author: AstroDogeDX
+  changes:
+  - message: Certain outerwear sprites were accidentally reverted; they're back in
+      step with Goob now. My bad!
+    type: Fix
+  id: 72
+  time: '2024-12-30T08:16:28.793209'
+- author: AstroDogeDX
+  changes:
+  - message: Giant Tarantulas are now hostile again! PEACE WAS NEVER AN OPTION!
+    type: Fix
+  id: 71
+  time: '2024-12-30T08:13:54.522072'
+- author: AstroDogeDX
+  changes:
+  - message: Event frequency and population requirements have been rebalanced, again...
+      we'll get there eventually.
+    type: Tweak
+  id: 70
+  time: '2024-12-30T08:15:35.778731'
+- author: AstroDogeDX
+  changes:
+  - message: Cleanbots can now move underneath doors and over tables to be better
+      at cleaning. Jani meta has been disrupted, cope and seethe galoshers.
+    type: Tweak
+  id: 69
+  time: '2024-12-30T08:14:32.818406'
+- author: MilonPL (Ported by AstroDogeDX)
+  changes:
+  - message: Added PDA Messaging! Check your PDA for the NanoChat app and share your
+      numbers with your friends!
+    type: Add
+  id: 68
+  time: '2024-12-29T04:24:56.175814'
+- author: AstroDogeDX
+  changes:
   - message: New species; Resomi! Definitely Legally Distinct™ space avians who are
       small and cold resistant!
     type: Add

@@ -312,6 +312,10 @@
   whitelist:
     components:
     - MobState
+  blacklist: #Goobstation - Replace deathgasp for IPCs and cyborgs
+    components:
+    - Silicon
+    - BorgChassis
   chatMessages: ["chat-emote-msg-deathgasp"]
   chatTriggers:
   - deathgasp
@@ -350,6 +354,18 @@
     - wehs
     - wehing
     - wehed
+
+- type: emote
+  id: Hew
+  name: chat-emote-name-hew
+  category: Vocal
+  icon: Interface/Emotes/hew.png
+  chatMessages: ["chat-emote-msg-hew"]
+  chatTriggers:
+    - hew
+    - hews
+    - hewing
+    - hewed
 
 - type: emote
   id: Chirp
