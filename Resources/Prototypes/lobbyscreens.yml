@@ -1,15 +1,23 @@
 - type: lobbyBackground
-  id: Shiba1
-  background: /Textures/_ShibaStation/LobbyScreens/shiba1.webp
+  id: Revenant
+  background: /Textures/_ShibaStation/LobbyScreens/revenant.webp
+  name: Revenant of Safety Violations
+  artist: Wolfio
 
 - type: lobbyBackground
-  id: Shiba2
-  background: /Textures/_ShibaStation/LobbyScreens/shiba2.webp
+  id: Singuloose
+  background: /Textures/_ShibaStation/LobbyScreens/singuloose.webp
+  name: Singuloose
+  artist: Wolfio
 
 - type: lobbyBackground
-  id: Shiba3
-  background: /Textures/_ShibaStation/LobbyScreens/shiba3.webp
+  id: Eating_Bullets
+  background: /Textures/_ShibaStation/LobbyScreens/eating_bullets.webp
+  name: Eating Bullets
+  artist: TazerPones
 
 - type: lobbyBackground
-  id: Shiba4
-  background: /Textures/_ShibaStation/LobbyScreens/shiba4.webp
+  id: Police_Brutality
+  background: /Textures/_ShibaStation/LobbyScreens/police_brutality.webp
+  name: Police Brutality
+  artist: TazerPones

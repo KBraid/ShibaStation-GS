@@ -8,6 +8,11 @@
   components:
   - type: Body # Shitmed
     prototype: SpaceDragon
+  - type: SurgeryTarget # Shitmed
+  - type: UserInterface # Shitmed
+    interfaces:
+      enum.SurgeryUIKey.Key:
+        type: SurgeryBui
   - type: Bloodstream
     bloodMaxVolume: 650
   - type: GhostRole
@@ -19,6 +24,12 @@
     rules: ghost-role-information-space-dragon-rules
     raffle:
       settings: default
+    requirements: # ShibaStation - Antag Playtime Requirements
+    - !type:OverallPlaytimeRequirement
+      time: 180000 # 50 hours
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 72000 # 20 hours
   - type: GhostTakeoverAvailable
   - type: HTN
     rootTask:
@@ -152,12 +163,18 @@
     tags:
     - CannotSuicide
     - DoorBumpOpener
+    - DragonMind # Goobstation - Collective mind
+  # Goobstation - Collective mind
+  - type: CollectiveMind
+    defaultChannel: Dragonmind
   - type: Puller
     needsHands: false
   - type: NightVision # Goobstation - Nigthvision
     color: "#808080"
     activateSound: null
     deactivateSound: null
+  - type: CombatPower # Goobstation
+    factor: 4 # times more dangerous than a crew-member
 
 - type: entity
   parent: BaseMobDragon
@@ -168,6 +185,7 @@
   - type: GuideHelp
     guides:
     - MinorAntagonists
+  - type: Fauna # Lavaland Change
 
 - type: entity
   categories: [ HideSpawnMenu ]

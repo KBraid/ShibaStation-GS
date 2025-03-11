@@ -1,8 +1,8 @@
 - type: startingGear
-  id: ChiefCentralCommanderGear
+  id: ChiefCCAdmemeGear
   equipment:
-    jumpsuit: CentcomAgentSkirt
-    back: ClothingBackpackSatchelHolding
+    jumpsuit: ClothingUniformJumpskirtCentcomFormalDress
+    back: ClothingModsuitExperimental
     shoes: ClothingShoesChameleonNoSlips
     eyes: ClothingEyesGlassesMedSec
     gloves: ClothingHandsGlovesCaptain
@@ -12,5 +12,51 @@
     head: ClothingHeadHatCentcomcap
     neck: ClothingNeckCloakCentcom
     belt: ClothingBeltSheathFilled
-    suitstorage: WeaponPulseCarbine
-    pocket1: SonicScrewdriver
+  storage:
+    back:
+    # Survival
+    - BoxSurvivalSlotsEngineering
+    # Tools
+    - SonicScrewdriver
+    - RCDChrono
+    - RPDRecharging
+    - NetworkConfigurator
+    - WelderExperimental
+    - ClothingEyesGlassesMeson
+    - GasAnalyzer
+    - HolofanProjectorEmpty
+    - trayScanner
+    - AccessConfiguratorUniversal
+    - DoorRemoteAll
+    # Science
+    - AnomalyLocatorEmpty
+    - WeaponPistolCHIMP
+    - AnomalyScanner
+    - ChronoTeleporter
+    # Security
+    - StasisBaton
+    - WeaponDisablerSMG
+    - WeaponPulseRifle
+    - Handcuffs
+    - Handcuffs
+    - Handcuffs
+    # Medical
+    - DefibrillatorCompact
+    - MedkitCombatStasiziumFilled
+    - MedkitCombatFilled
+    - OmnimedTool
+    - ClothingMaskSterile
+    - ClothingHandsGlovesNitrile
+    # Implants
+    - MindShieldImplanter
+    - TrackingImplanter
+    - FreedomImplanter
+    - BluespaceLifelineImplanter
+    # Misc
+    - LightReplacerLEDAdmeme
+    - PortableRecharger
+    - PowerCellMicroreactor
+    - PowerCellMicroreactor
+    - PowerCellMicroreactor
+    - PowerCellMicroreactor
+    - PowerCellMicroreactor

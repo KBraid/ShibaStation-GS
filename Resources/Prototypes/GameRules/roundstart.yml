@@ -97,15 +97,17 @@
   components:
   - type: GameRule
     minPlayers: 20
+    cancelPresetOnTooFewPlayers: true # ShibaStation
   - type: LoadMapRule
     mapPath: /Maps/_Goobstation/Nonstations/nukieplanet.yml # goob edit
   - type: AntagSelection
-    selectionTime: BeforeJobs
+    selectionTime: PrePlayerSpawn
     definitions:
     - prefRoles: [ NukeopsCommander ]
       fallbackRoles: [ Nukeops, NukeopsMedic ]
       spawnerPrototype: SpawnPointNukeopsCommander
       startingGear: SyndicateCommanderGearFull
+      unequipOldGear: true
       roleLoadout:
       - RoleSurvivalNukie
       components:
@@ -123,6 +125,7 @@
       fallbackRoles: [ Nukeops, NukeopsCommander ]
       spawnerPrototype: SpawnPointNukeopsMedic
       startingGear: SyndicateOperativeMedicFull
+      unequipOldGear: true
       roleLoadout:
       - RoleSurvivalNukie
       components:
@@ -142,6 +145,7 @@
       max: 10 # Goobstation / 古布空间站 - 没有限制的核特工
       playerRatio: 16 # Goobstation
       startingGear: SyndicateOperativeGearFull
+      unequipOldGear: true
       roleLoadout:
       - RoleSurvivalNukie
       components:
@@ -212,6 +216,7 @@
   components:
   - type: GameRule
     minPlayers: 15
+    cancelPresetOnTooFewPlayers: true # ShibaStation
   - type: RevolutionaryRule
   - type: AntagSelection
     selectionTime: BeforeJobs # Goobstation
@@ -251,6 +256,7 @@
     delay:
       min: 600
       max: 900
+    cancelPresetOnTooFewPlayers: true # ShibaStation
   - type: ZombieRule
   - type: AntagSelection
     definitions:

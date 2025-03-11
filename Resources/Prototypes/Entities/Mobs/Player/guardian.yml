@@ -16,6 +16,9 @@
       rules: ghost-role-information-familiar-rules
       raffle:
         settings: default
+      requirements: # ShibaStation - Antag Playtime Requirements
+      - !type:OverallPlaytimeRequirement
+        time: 36000 # 10 hours
     - type: GhostTakeoverAvailable
     - type: Input
       context: "human"
@@ -109,6 +112,7 @@
     - type: Tag
       tags:
         - CannotSuicide
+    - type: MovementIgnoreGravity # Goobstation
 
 # From the uplink injector
 - type: entity
@@ -126,6 +130,9 @@
       rules: ghost-role-information-familiar-rules
       raffle:
         settings: default
+      requirements: # ShibaStation - Antag Playtime Requirements
+      - !type:OverallPlaytimeRequirement
+        time: 36000 # 10 hours
     - type: GhostTakeoverAvailable
     - type: NameIdentifier
       group: Holoparasite
@@ -159,6 +166,9 @@
       rules: ghost-role-information-familiar-rules
       raffle:
         settings: default
+      requirements: # ShibaStation - Antag Playtime Requirements
+      - !type:OverallPlaytimeRequirement
+        time: 36000 # 10 hours
     - type: GhostTakeoverAvailable
     - type: RandomSprite
       available:
@@ -172,6 +182,16 @@
           map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
           color: "#40a7d7"
           shader: unshaded
+    - type: NpcFactionMember # Goobstation
+      factions:
+        - Wizard
+    - type: HTN # Goobstation
+      rootTask:
+        task: SimpleHumanoidHostileCompound
+    - type: Tag # Goobstation
+      tags:
+        - CannotSuicide
+        - ShowWizardIcons
 
 - type: entity
   name: HoloClown
@@ -188,6 +208,9 @@
       rules: ghost-role-information-familiar-rules
       raffle:
         settings: default
+      requirements: # ShibaStation - Antag Playtime Requirements
+      - !type:OverallPlaytimeRequirement
+        time: 36000 # 10 hours
     - type: GhostTakeoverAvailable
     - type: NameIdentifier
       group: Holoparasite

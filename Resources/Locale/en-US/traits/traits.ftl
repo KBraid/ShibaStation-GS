@@ -27,7 +27,7 @@ trait-unrevivable-desc = You are unable to be revived by defibrillators.
 trait-pirate-accent-name = Pirate accent
 trait-pirate-accent-desc = You can't stop speaking like a pirate!
 
-trait-accentless-name = Accentless
+trait-accentless-name = *Accentless
 trait-accentless-desc = You don't have the accent that your species would usually have
 
 trait-frontal-lisp-name = Frontal lisp
@@ -71,3 +71,6 @@ trait-spanish-desc = Hola señor, donde esta la biblioteca.
 
 trait-dementia-name = Dementia
 trait-dementia-desc = I-... uh, what was this one about again? Oh thats right! You forget a lot sometimes
+
+trait-painnumbness-name = Numb
+trait-painnumbness-desc = You lack any sense of feeling pain, being unaware of how hurt you may be.

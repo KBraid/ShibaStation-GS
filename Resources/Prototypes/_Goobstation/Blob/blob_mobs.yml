@@ -30,6 +30,9 @@
       tags:
         - HidesHair
         - BlobMob
+        - BlobMind
+    - type: CollectiveMind
+      defaultChannel: Blobmind
     - type: IngestionBlocker
     - type: IdentityBlocker
     - type: BlobPod
@@ -116,12 +119,21 @@
     - type: Tag
       tags:
         - BlobMob
+        - BlobMind
+    - type: CollectiveMind
+      defaultChannel: Blobmind
     - type: GhostRole
       name: ghost-role-information-blobbernaut-name
       description: ghost-role-information-blobbernaut-description
       rules: You are an antagonist, defend your blob core!
       raffle:
-        settings: default
+        settings: short
+      requirements: # ShibaStation - Antag Playtime Requirements
+      - !type:OverallPlaytimeRequirement
+        time: 72000 # 20 hours
+      - !type:DepartmentTimeRequirement
+        department: Security
+        time: 36000 # 10 hours
     - type: GhostTakeoverAvailable
     - type: Blobbernaut
     - type: Physics
@@ -210,10 +222,6 @@
     - type: Alerts
     - type: ReplacementAccent
       accent: genericAggressive
-    - type: ActiveRadio
-      channels:
-      - Hivemind
-    #- type: BlobSpeak
     - type: Hands
       showInHands: true
     - type: BlobObserver
@@ -230,6 +238,12 @@
       name: ghost-role-information-blob-name
       description: ghost-role-information-blob-description
       rules: You are an antagonist, destroy the station!
+      requirements: # ShibaStation - Antag Playtime Requirements
+      - !type:OverallPlaytimeRequirement
+        time: 180000 # 50 hours
+      - !type:DepartmentTimeRequirement
+        department: Security
+        time: 72000 # 20 hours
     - type: GhostTakeoverAvailable
     - type: Fixtures
       fixtures:
@@ -258,3 +272,6 @@
     - type: Tag
       tags:
       - BypassInteractionRangeChecks
+      - BlobMind
+    - type: CollectiveMind
+      defaultChannel: Blobmind

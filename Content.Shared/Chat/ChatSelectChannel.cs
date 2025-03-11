@@ -7,7 +7,7 @@
     ///     Maps to <see cref="ChatChannel"/>, giving better names.
     /// </remarks>
     [Flags]
-    public enum ChatSelectChannel : ushort
+    public enum ChatSelectChannel : uint // Goobstation - Starlight collective mind port
     {
         None = 0,
 
@@ -42,6 +42,17 @@
         Emotes = ChatChannel.Emotes,
 
         /// <summary>
+        ///     FloofStation
+        /// </summary>
+        Subtle = ChatChannel.Subtle,
+
+        // Goobstation - Starlight collective mind port
+        /// <summary>
+        ///     CollectiveMind
+        /// </summary>
+        CollectiveMind = ChatChannel.CollectiveMind,
+
+        /// <summary>
         ///     Deadchat
         /// </summary>
         Dead = ChatChannel.Dead,
@@ -50,6 +61,11 @@
         ///     Admin chat
         /// </summary>
         Admin = ChatChannel.AdminChat,
+
+        /// <summary>
+        ///     Nyano - Summary:. Telepathic channel for all psionic entities.
+        /// </summary>
+        Telepathic = ChatChannel.Telepathic,
 
         Console = ChatChannel.Unspecified
     }

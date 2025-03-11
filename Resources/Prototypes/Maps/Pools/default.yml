@@ -2,25 +2,28 @@
   id: DefaultMapPool
   maps:
   - Atlas
-  - Amber # TODO: pirasmas amber
-  - Bagel
-  - Box
+  - Amber
+  # - Bagel
+  # - Box
   - Cluster
-  #- Cog # Goobstation - cog is broken
-  - Core
-  - Fland
-  #- Gate
+  # - Cog # Goobstation - cog is broken
+  # - Core
+  # - Fland
+  # - Gate
   # - Loop # ShibaStation - Loop is cringe
-  - Marathon
-  - Meta
-  - Oasis
+  # - Marathon
+  # - Meta
+  # - Oasis # ShibaStation - Oasis is broken sad face
   - Omega
-  - Origin
+  # - Origin
   - Saltern
   - Packed
-  - Reach
-#  - Train # Goobstation - all my friends hate train
-  - FlandHighPop
-  - OasisHighPop
-  - Barratry # Goobstation - Re-add barratry
-  - Kettle # Goobstation - Re-add kettle (before it was gemini!)
+  # - Reach # ShibaStation - FUCK REACH FUCK REACH FUCK REACH
+  # - Train # Goobstation - all my friends hate train
+  # - FlandHighPop
+  # - OasisHighPop
+  # - Barratry # Goobstation - Re-add barratry
+  # - Kettle # Goobstation - Re-add kettle (before it was gemini!)
+  # - Submarine # goobstation - kill yourself
+  # - Leonid # Goobstation - for goob by goob
+  - Elkridge # ShibaStation - Elkridge

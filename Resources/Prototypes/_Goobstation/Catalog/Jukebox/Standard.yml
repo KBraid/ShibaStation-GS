@@ -23,10 +23,10 @@
     path: /Audio/Lobby/clownalwayswins.ogg
 
 - type: jukebox
-  id: honk
-  name: SlendyMawn - Honk!
+  id: horn
+  name: Scruq - Horn!
   path:
-    path: /Audio/Lobby/honk.ogg
+    path: /Audio/Lobby/horn.ogg
 
 - type: jukebox
   id: thewizard
@@ -52,23 +52,23 @@
   path:
     path: /Audio/_Goobstation/Announcements/violet.ogg
 
-- type: jukebox
-  id: redsun
-  name: Red Sun in the Sky
-  path:
-    path: /Audio/Lobby/redsun.ogg
+# - type: jukebox
+#   id: redsun
+#   name: Red Sun in the Sky
+#   path:
+#     path: /Audio/Lobby/redsun.ogg
+
+# - type: jukebox
+#   id: chollima
+#   name: Pochonbo Electronic Ensemble - Chollima on the Wing
+#   path:
+#     path: /Audio/Lobby/chollima.ogg
 
 - type: jukebox
-  id: chollima
-  name: Pochonbo Electronic Ensemble - Chollima on the Wing
+  id: blatantly_nuclear
+  name: mrjajkes - Blatantly Nuclear
   path:
-    path: /Audio/Lobby/chollima.ogg
-
-- type: jukebox
-  id: clearly_nuclear
-  name: Mrjajkes - Clearly Nuclear
-  path:
-    path: /Audio/StationEvents/clearly_nuclear.ogg
+    path: /Audio/StationEvents/blatantly_nuclear.ogg
 
 - type: jukebox
   id: countdown

@@ -55,6 +55,8 @@ public sealed partial class AirAlarmWindow : FancyWindow
             {
                 AirAlarmMode.Filtering => "air-alarm-ui-mode-filtering",
                 AirAlarmMode.WideFiltering => "air-alarm-ui-mode-wide-filtering",
+                AirAlarmMode.Cycling => "air-alarm-ui-mode-cycling",
+                AirAlarmMode.WideCycling => "air-alarm-ui-mode-wide-cycling",
                 AirAlarmMode.Fill => "air-alarm-ui-mode-fill",
                 AirAlarmMode.Panic => "air-alarm-ui-mode-panic",
                 AirAlarmMode.None => "air-alarm-ui-mode-none",
@@ -130,8 +132,8 @@ public sealed partial class AirAlarmWindow : FancyWindow
                 if (!_pumps.TryGetValue(addr, out var pumpControl))
                 {
                     var control= new PumpControl(pump, addr);
-                    control.PumpDataChanged += AtmosDeviceDataChanged!.Invoke;
-					control.PumpDataCopied += AtmosDeviceDataCopied!.Invoke;
+                    control.PumpDataChanged += AtmosDeviceDataChanged;
+                    control.PumpDataCopied += AtmosDeviceDataCopied;
                     _pumps.Add(addr, control);
                     CVentContainer.AddChild(control);
                 }
@@ -145,8 +147,8 @@ public sealed partial class AirAlarmWindow : FancyWindow
                 if (!_scrubbers.TryGetValue(addr, out var scrubberControl))
                 {
                     var control = new ScrubberControl(scrubber, addr);
-                    control.ScrubberDataChanged += AtmosDeviceDataChanged!.Invoke;
-					control.ScrubberDataCopied += AtmosDeviceDataCopied!.Invoke;
+                    control.ScrubberDataChanged += AtmosDeviceDataChanged;
+					control.ScrubberDataCopied += AtmosDeviceDataCopied;
                     _scrubbers.Add(addr, control);
                     CScrubberContainer.AddChild(control);
                 }
@@ -161,6 +163,7 @@ public sealed partial class AirAlarmWindow : FancyWindow
                 {
                     var control = new SensorInfo(sensor, addr);
                     control.OnThresholdUpdate += AtmosAlarmThresholdChanged;
+                    control.SensorDataCopied += AtmosDeviceDataCopied;
                     _sensors.Add(addr, control);
                     CSensorContainer.AddChild(control);
                 }

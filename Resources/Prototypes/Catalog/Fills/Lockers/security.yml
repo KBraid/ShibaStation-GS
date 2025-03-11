@@ -7,10 +7,12 @@
     contents:
       - id: FlashlightSeclite
       - id: WeaponEnergyShotgun
-      - id: WeaponDisabler
+      #- id: WeaponDisabler #Goobstation (Disablers in belts)
       - id: ClothingBeltSecurityFilled
+      - id: ClothingHandsGlovesKravMaga # Goobstation - Martial Arts
       - id: Flash
       - id: ClothingEyesGlassesSecurity
+      - id: ClothingHeadsetAltWarden # Goobstation
       - id: ClothingHandsGlovesCombat
       - id: ClothingShoesBootsJack
       - id: ClothingOuterCoatWarden
@@ -28,6 +30,10 @@
         amount: 2
       - id: RemoteSignaller # ShibaStation - More clickers.
         amount: 4
+      - id: Multitool # Goobstation
+      - id: Wrench # Goobstation
+      - id: ContrabandDetectorFlatpack # Goobstation
+        amount: 2
 
 - type: entity
   id: LockerWardenFilled
@@ -38,10 +44,12 @@
     contents:
       - id: FlashlightSeclite
       - id: WeaponEnergyShotgun # Goobstation
-      - id: WeaponDisabler
+      #- id: WeaponDisabler #Goobstation (Disablers in belts)
       - id: ClothingBeltSecurityFilled
+      - id: ClothingHandsGlovesKravMaga # Goobstation - Martial Arts
       - id: Flash
       - id: ClothingEyesGlassesSecurity
+      - id: ClothingHeadsetAltWarden # Goobstation
       - id: ClothingHandsGlovesCombat
       - id: ClothingShoesBootsJack
       - id: ClothingOuterCoatWarden
@@ -56,6 +64,11 @@
         amount: 2
       - id: RemoteSignaller # ShibaStation - More clickers.
         amount: 4
+      - id: Binoculars
+      - id: Multitool # Goobstation
+      - id: Wrench # Goobstation
+      - id: ContrabandDetectorFlatpack # Goobstation
+        amount: 2
 
 - type: entity
   id: LockerSecurityFilled
@@ -66,12 +79,13 @@
     contents:
       - id: FlashlightSeclite
         prob: 0.8
-      - id: WeaponDisabler
+      #- id: WeaponDisabler #Goobstation (Disablers in belts)
       - id: ClothingUniformJumpsuitSecGrey
         prob: 0.3
       - id: ClothingHeadHelmetBasic
       - id: ClothingOuterArmorBasic
       - id: ClothingBeltSecurityFilled
+      - id: ClothingBeltCorporateJudoFilled # Goobstation - Martial Arts
       - id: Flash
         prob: 0.5
       - id: ClothingEyesGlassesSecurity
@@ -155,13 +169,12 @@
     contents:
       - id: ClothingHeadHelmetBombSuit
       - id: ClothingOuterSuitBomb
-      # NT is cheap, what can you do...
       - id: Wirecutter
       - id: Screwdriver
       - id: Multitool
 
 - type: entity
-  parent: [GunSafeBaseSecure, BaseRestrictedContraband]
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunSafeDisabler
   name: disabler safe
   components:
@@ -171,7 +184,7 @@
       amount: 5
 
 - type: entity
-  parent: [GunSafeBaseSecure, BaseRestrictedContraband]
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunSafePistolMk58
   name: mk58 safe
   components:
@@ -183,7 +196,7 @@
       amount: 8
 
 - type: entity
-  parent: [GunSafeBaseSecure, BaseRestrictedContraband]
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunSafeRifleLecter
   name: lecter safe
   components:
@@ -195,7 +208,7 @@
       amount: 4
 
 - type: entity
-  parent: [GunSafeBaseSecure, BaseRestrictedContraband]
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunSafeSubMachineGunDrozd
   name: drozd safe
   components:
@@ -207,7 +220,7 @@
       amount: 4
 
 - type: entity
-  parent: [GunSafeBaseSecure, BaseRestrictedContraband]
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunSafeShotgunEnforcer
   name: enforcer safe
   components:
@@ -215,11 +228,11 @@
     contents:
     - id: WeaponShotgunEnforcer
       amount: 2
-    - id: MagazineShotgun
+    - id: BoxLethalshot
       amount: 4
 
 - type: entity
-  parent: [GunSafeBaseSecure, BaseRestrictedContraband]
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunSafeShotgunKammerer
   name: kammerer safe
   components:
@@ -227,13 +240,13 @@
     contents:
     - id: WeaponShotgunKammerer
       amount: 2
-    - id: MagazineShotgun
-      amount: 4
+    - id: BoxLethalshot
+      amount: 2
 
 - type: entity
   id: GunSafeSubMachineGunWt550
   suffix: Wt550
-  parent: [GunSafeBaseSecure, BaseRestrictedContraband]
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
   name: wt550 safe
   components:
   - type: StorageFill
@@ -244,7 +257,7 @@
       amount: 4
 
 - type: entity
-  parent: GunSafeBaseSecure
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunSafeLaserCarbine
   name: laser safe
   components:
@@ -252,3 +265,5 @@
     contents:
     - id: WeaponLaserCarbine
       amount: 3
+    - id: WeaponTemperatureGun # Goobstation
+      amount: 2

@@ -197,6 +197,7 @@ namespace Content.Client.Options.UI.Tabs
             AddHeader("ui-options-header-interaction-adv");
             AddButton(ContentKeyFunctions.SmartEquipBackpack);
             AddButton(ContentKeyFunctions.SmartEquipBelt);
+            AddButton(ContentKeyFunctions.SmartEquipBack); // Goobstation - Equip To Back
             AddButton(ContentKeyFunctions.OpenBackpack);
             AddButton(ContentKeyFunctions.OpenBelt);
             AddButton(ContentKeyFunctions.ThrowItemInHand);
@@ -212,6 +213,7 @@ namespace Content.Client.Options.UI.Tabs
             AddButton(ContentKeyFunctions.FocusChat);
             AddButton(ContentKeyFunctions.FocusLocalChat);
             AddButton(ContentKeyFunctions.FocusEmote);
+            AddButton(ContentKeyFunctions.FocusSubtle); // FloofStation
             AddButton(ContentKeyFunctions.FocusWhisperChat);
             AddButton(ContentKeyFunctions.FocusRadio);
             AddButton(ContentKeyFunctions.FocusLOOC);

@@ -11,7 +11,7 @@
     - Reptilian
     - SlimePerson
     # Goobstation
-    - Felinid
+    # - Felinid
     - Gingerbread
     - Harpy
     - Vox
@@ -21,6 +21,7 @@
     - IPC
     - Resomi
     - Oni
+    - Tajaran
 
 - type: guideEntry
   id: Arachnid
@@ -58,10 +59,10 @@
   text: "/ServerInfo/Guidebook/Mobs/SlimePerson.xml"
 
 # Goobstation
-- type: guideEntry
-  id: Felinid
-  name: species-name-felinid
-  text: "/ServerInfo/Guidebook/Mobs/Felinid.xml"
+#- type: guideEntry
+#  id: Felinid
+#  name: species-name-felinid
+#  text: "/ServerInfo/Guidebook/Mobs/Felinid.xml"
 
 - type: guideEntry
   id: Gingerbread
@@ -84,11 +85,6 @@
   text: "/ServerInfo/Guidebook/Mobs/Vulpkanin.xml"
 
 - type: guideEntry
-  id: Rodentia
-  name: species-name-rodentia
-  text: "/ServerInfo/Guidebook/Mobs/DeltaV/Rodentia.xml"
-
-- type: guideEntry
   id: Yowie
   name: species-name-yowie
   text: "/ServerInfo/Guidebook/Mobs/Yowie.xml"
@@ -104,6 +100,6 @@
   text: "/ServerInfo/Guidebook/Mobs/Resomi.xml"
 
 - type: guideEntry
-  id: Oni
-  name: species-name-oni
-  text: "/ServerInfo/Guidebook/Mobs/DeltaV/Oni.xml"
+  id: Tajaran
+  name: species-name-tajaran
+  text: "/ServerInfo/Guidebook/Mobs/Tajaran.xml"

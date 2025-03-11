@@ -14,12 +14,14 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction FocusChat = "FocusChatInputWindow";
         public static readonly BoundKeyFunction FocusLocalChat = "FocusLocalChatWindow";
         public static readonly BoundKeyFunction FocusEmote = "FocusEmote";
+        public static readonly BoundKeyFunction FocusSubtle = "FocusSubtle"; // FloofStation
         public static readonly BoundKeyFunction FocusWhisperChat = "FocusWhisperChatWindow";
         public static readonly BoundKeyFunction FocusRadio = "FocusRadioWindow";
         public static readonly BoundKeyFunction FocusLOOC = "FocusLOOCWindow";
         public static readonly BoundKeyFunction FocusOOC = "FocusOOCWindow";
         public static readonly BoundKeyFunction FocusAdminChat = "FocusAdminChatWindow";
         public static readonly BoundKeyFunction FocusDeadChat = "FocusDeadChatWindow";
+        public static readonly BoundKeyFunction FocusCollectiveMindChat = "FocusCollectiveMindChatWindow"; // Goobstation - Starlight collective mind port
         public static readonly BoundKeyFunction FocusConsoleChat = "FocusConsoleChatWindow";
         public static readonly BoundKeyFunction CycleChatChannelForward = "CycleChatChannelForward";
         public static readonly BoundKeyFunction CycleChatChannelBackward = "CycleChatChannelBackward";
@@ -31,6 +33,7 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction OpenInventoryMenu = "OpenInventoryMenu";
         public static readonly BoundKeyFunction SmartEquipBackpack = "SmartEquipBackpack";
         public static readonly BoundKeyFunction SmartEquipBelt = "SmartEquipBelt";
+        public static readonly BoundKeyFunction SmartEquipBack = "SmartEquipBack"; // Goobstation - Smart equip to back
         public static readonly BoundKeyFunction OpenBackpack = "OpenBackpack";
         public static readonly BoundKeyFunction OpenBelt = "OpenBelt";
         public static readonly BoundKeyFunction OpenAHelp = "OpenAHelp";

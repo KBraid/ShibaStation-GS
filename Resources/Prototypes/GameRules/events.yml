@@ -5,25 +5,28 @@
     - id: AnomalySpawn
     - id: BluespaceArtifact
     - id: BluespaceLocker
-    - id: BreakerFlip
+    # - id: BreakerFlip # ShibaStation - Disabled until I make a custom announcement for it, because no one notices and wonders why power is out.
     - id: BureaucraticError
     - id: ClericalError
-    - id: CockroachMigration
+    # - id: CockroachMigration # ShibaStation - Rolled into 'Category1VentSpawn' event.
     - id: GasLeak
     # - id: GreytideVirus # ShibaStation - Disabled; tiders already have plenty of other ways to get into places.
     - id: IonStorm # its calm like 90% of the time smh
     - id: KudzuGrowth
     - id: MassHallucinations
     - id: MimicVendorRule
-    - id: MouseMigration
+    # - id: MouseMigration # ShibaStation - Rolled into 'Category1VentSpawn' event.
     - id: PowerGridCheck
     - id: RandomSentience
-    - id: SlimesSpawn
+    # - id: SlimesSpawn # ShibaStation - Rolled into 'Category3VentSpawn' event.
     - id: SolarFlare
-    - id: SnakeSpawn
+    # - id: SnakeSpawn # ShibaStation - Rolled into 'Category3VentSpawn' event.
     - id: SpiderClownSpawn
-    - id: SpiderSpawn
+    # - id: SpiderSpawn # ShibaStation - Rolled into 'Category3VentSpawn' event.
     - id: VentClog
+    - id: Category1VentSpawn # ShibaStation - Rolled into 'Category1VentSpawn' event.
+    - id: Category3VentSpawn # ShibaStation - Rolled into 'Category3VentSpawn' event.
+    # - id: TidemindDevelop # Goobstation - Tidemind # ShibaStation - Disabled, we don't need this.
 
 - type: entityTable
   id: BasicAntagEventsTable
@@ -39,6 +42,9 @@
     - id: LoneOpsSpawn
     - id: DerelictCyborgSpawn
     - id: BlobSpawn # Goobstation - Blob
+    - id: LoneAbductorSpawn # Shitmed - Starlight Abductors
+    - id: DuoAbductorSpawn # Shitmed - Starlight Abductors
+    # - id: BingleSpawn #Goobstation - Bingle # ShibaStation - Pretty sure this is memeshit, so I'm disabling it for now.
 
 - type: entity
   id: BaseStationEvent
@@ -155,6 +161,7 @@
     weight: 5
     duration: 1
     minimumPlayers: 10
+    maxOccurrences: 2 # ShibaStation - Capped at 2, we get too many dang skeletons.
   - type: RandomEntityStorageSpawnRule
     prototype: MobSkeletonCloset
 
@@ -201,7 +208,12 @@
   - type: AntagLoadProfileRule
     # Goobstation start
     speciesOverride: Human
-    alwaysUseSpeciesOverride: true
+    speciesOverrideBlacklist:
+    - Yowie
+    - IPC
+    - Diona
+    - Abductor
+    - Harpy
     # Goobstation end
   - type: AntagObjectives
     objectives:
@@ -274,7 +286,8 @@
     endAudio:
       path: /Audio/_ShibaStation/Announcements/gasleak-end.ogg
     weight: 6 # ShibaStation - Reduced from 8 to 6
-    reoccurrenceDelay: 15 # ShibaStation - Gas leaks now can only happen after 15 minutes since the last one.
+    reoccurrenceDelay: 30 # ShibaStation - Gas leaks now can only happen after 30 minutes since the last one.
+    maxOccurrences: 5 # ShibaStation - Gas leaks now can only happen 5 times per round.
   - type: GasLeakRule
 
 - type: entity
@@ -345,7 +358,7 @@
     startAudio:
       path: /Audio/_ShibaStation/Announcements/ventclog-start.ogg
     earliestStart: 15
-    minimumPlayers: 4 # ShibaStation - Reduced from 15 to 4
+    minimumPlayers: 6 # ShibaStation - Reduced from 15 to 6
     weight: 3 # ShibaStation - Reduced from 5 to 3
     duration: 60
     reoccurrenceDelay: 40 # ShibaStation - Vent clogs now can only happen after 40 minutes since the last one.
@@ -360,10 +373,9 @@
     startAudio:
       path: /Audio/_ShibaStation/Announcements/vent-3-hostile.ogg
     earliestStart: 20
-    minimumPlayers: 12 # ShibaStation - Reduced from 15 to 12
-    weight: 1 # GoobStation: was 5, vent critters bad
+    minimumPlayers: 15
+    weight: 0.5 # GoobStation: was 5, vent critters bad
     duration: 60
-    reoccurrenceDelay: 30 # ShibaStation - Vent critters now can only happen after 30 minutes since the last one.
   - type: VentCrittersRule
     entries:
     - id: MobAdultSlimesBlueAngry
@@ -382,18 +394,17 @@
     startAudio:
       path: /Audio/_ShibaStation/Announcements/vent-3-hostile.ogg
     earliestStart: 20
-    minimumPlayers: 10 # ShibaStation - Reduced from 15 to 10
-    weight: 1 # GoobStation: was 5, critters because bad
+    minimumPlayers: 15
+    weight: 2 # GoobStation: was 5, critters because bad
     duration: 60
-    reoccurrenceDelay: 30 # ShibaStation - Vent critters now can only happen after 30 minutes since the last one.
   - type: VentCrittersRule
     entries:
     - id: MobPurpleSnake
       prob: 0.02
     - id: MobSmallPurpleSnake
       prob: 0.02
-    - id: MobCobraSpace
-      prob: 0.02
+    # - id: MobCobraSpace # ShibaStation - No longer spawns free stealth glands
+    #   prob: 0.02
 
 - type: entity
   id: SpiderSpawn
@@ -404,10 +415,9 @@
     startAudio:
       path: /Audio/_ShibaStation/Announcements/vent-3-hostile.ogg
     earliestStart: 20
-    minimumPlayers: 8 # ShibaStation - Reduced from 15 to 8
+    minimumPlayers: 15
     weight: 1 # GoobStation: was 1, vent critters bad
     duration: 60
-    reoccurrenceDelay: 30 # ShibaStation - Vent critters now can only happen after 30 minutes since the last one.
   - type: VentCrittersRule
     entries:
     - id: MobGiantSpiderAngry
@@ -422,10 +432,9 @@
     startAudio:
       path: /Audio/_ShibaStation/Announcements/vent-5-danger.ogg
     earliestStart: 20
-    minimumPlayers: 14 # ShibaStation - Reduced from 20 to 14
-    weight: 0.5 # ShibaStation - Back to 0.5
+    minimumPlayers: 20
+    weight: 0.5 # GoobStation: was 1.5, vent critters bad
     duration: 60
-    reoccurrenceDelay: 30 # ShibaStation - Vent critters now can only happen after 30 minutes since the last one.
   - type: VentCrittersRule
     entries:
     - id: MobClownSpider
@@ -471,11 +480,11 @@
   - type: StationEvent
     earliestStart: 35
     weight: 5.5
-    minimumPlayers: 20
+    minimumPlayers: 25
     duration: 1
   - type: RuleGrids
   - type: LoadMapRule
-    mapPath: /Maps/Shuttles/ShuttleEvent/striker.yml
+    gridPath: /Maps/Shuttles/ShuttleEvent/striker.yml
   - type: NukeopsRule
     roundEndBehavior: Nothing
   - type: AntagSelection
@@ -485,6 +494,7 @@
       max: 1
       pickPlayer: false
       startingGear: SyndicateLoneOperativeGearFull
+      unequipOldGear: true
       roleLoadout:
       - RoleSurvivalNukie
       components:
@@ -509,7 +519,7 @@
   - type: StationEvent
     earliestStart: 30
     weight: 8
-    minimumPlayers: 15
+    minimumPlayers: 20
     maxOccurrences: 1 # can only happen once per round
     startAnnouncement: station-event-communication-interception
     startAudio:
@@ -553,7 +563,7 @@
   - type: StationEvent
     weight: 8
     reoccurrenceDelay: 20
-    minimumPlayers: 10 # ShibaStation - Ion storms tend to give out free shitter tickets, and at low pop it's cringe. This better meshes with escalating danger in line with population.
+    minimumPlayers: 20 # ShibaStation - Ion storms tend to give out free shitter tickets, and at low pop it's cringe. This better meshes with escalating danger in line with population.
     duration: 1
   - type: IonStormRule
 
@@ -597,7 +607,7 @@
     weight: 5
     earliestStart: 15
     reoccurrenceDelay: 20
-    minimumPlayers: 8 # ShibaStation - Increased from 4 to 8
+    minimumPlayers: 15 # ShibaStation - Increased from 4 to 15
     duration: null
   - type: SpaceSpawnRule
     spawnDistance: 0

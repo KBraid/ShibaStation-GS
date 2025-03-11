@@ -23,6 +23,7 @@
   - BlueshieldOfficerBackpack
   - BlueshieldOfficerOuter
   - BlueshieldOfficerNeck
+  - BlueshieldOfficerMask
   - BlueshieldOfficerShoes
   - Trinkets
   - Sharks
@@ -30,3 +31,11 @@
   - Pins
   - GroupSpeciesBreathTool
   - SurvivalSecurity
+
+- type: roleLoadout
+  id: RoleSurvivalNukieHonkops
+  groups:
+  - SurvivalSyndicate
+  - GroupHonkopsMask
+  - GroupPocketTankDouble
+

@@ -1,18 +1,24 @@
+using System.Collections.Immutable; // Goobstation - Starlight collective mind port
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using Content.Server._Goobstation.Wizard.Systems;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
+using Content.Server.Players.RateLimiting;
+using Content.Server.Speech.Prototypes;
 using Content.Server.Speech.Components;
 using Content.Server.Speech.EntitySystems;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
+using Content.Shared._Goobstation.Wizard.Chuuni;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
+using Content.Shared._Starlight.CollectiveMind; // Goobstation - Starlight collective mind port
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Ghost;
@@ -59,6 +65,10 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private readonly ReplacementAccentSystem _wordreplacement = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
+    [Dependency] private readonly TelepathicChatSystem _telepath = default!; // Goobstation Change
+    [Dependency] private readonly GhostVisibilitySystem _ghostVisibility = default!; // Goobstation Change
+    [Dependency] private readonly ScryingOrbSystem _scrying = default!; // Goobstation Change
+    [Dependency] private readonly CollectiveMindUpdateSystem _collectiveMind = default!; // Goobstation - Starlight collective mind port
 
     public const int VoiceRange = 10; // how far voice goes in world units
     public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
@@ -144,9 +154,11 @@ public sealed partial class ChatSystem : SharedChatSystem
         IConsoleShell? shell = null,
         ICommonSession? player = null, string? nameOverride = null,
         bool checkRadioPrefix = true,
-        bool ignoreActionBlocker = false)
+        bool ignoreActionBlocker = false,
+        string wrappedMessagePostfix = "" // Goobstation
+        )
     {
-        TrySendInGameICMessage(source, message, desiredType, hideChat ? ChatTransmitRange.HideChat : ChatTransmitRange.Normal, hideLog, shell, player, nameOverride, checkRadioPrefix, ignoreActionBlocker);
+        TrySendInGameICMessage(source, message, desiredType, hideChat ? ChatTransmitRange.HideChat : ChatTransmitRange.Normal, hideLog, shell, player, nameOverride, checkRadioPrefix, ignoreActionBlocker, wrappedMessagePostfix); // Goob edit
     }
 
     /// <summary>
@@ -170,7 +182,8 @@ public sealed partial class ChatSystem : SharedChatSystem
         ICommonSession? player = null,
         string? nameOverride = null,
         bool checkRadioPrefix = true,
-        bool ignoreActionBlocker = false
+        bool ignoreActionBlocker = false,
+        string wrappedMessagePostfix = "" // Goobstation
         )
     {
         if (HasComp<GhostComponent>(source))
@@ -179,6 +192,10 @@ public sealed partial class ChatSystem : SharedChatSystem
             TrySendInGameOOCMessage(source, message, InGameOOCChatType.Dead, range == ChatTransmitRange.HideChat, shell, player);
             return;
         }
+
+        // Goobstation - Starlight collective mind port
+        if (TryComp<CollectiveMindComponent>(source, out var collective))
+            _collectiveMind.UpdateCollectiveMind(source, collective);
 
         if (player != null && _chatManager.HandleRateLimit(player) != RateLimitStatus.Allowed)
             return;
@@ -214,7 +231,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             message = message[1..];
         }
 
-        bool shouldCapitalize = (desiredType != InGameICChatType.Emote);
+        bool shouldCapitalize = (desiredType != InGameICChatType.Emote && desiredType != InGameICChatType.Subtle);
         bool shouldPunctuate = _configurationManager.GetCVar(CCVars.ChatPunctuation);
         // Capitalizing the word I only happens in English, so we check language here
         bool shouldCapitalizeTheWordI = (!CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Parent.Name == "en")
@@ -225,19 +242,36 @@ public sealed partial class ChatSystem : SharedChatSystem
         // Was there an emote in the message? If so, send it.
         if (player != null && emoteStr != message && emoteStr != null)
         {
-            SendEntityEmote(source, emoteStr, range, nameOverride, ignoreActionBlocker);
+            SendEntityEmote(source, emoteStr, range, nameOverride, hideLog, true, ignoreActionBlocker);
         }
 
         // This can happen if the entire string is sanitized out.
         if (string.IsNullOrEmpty(message))
             return;
 
+        // Goobstation start
+        var postfixEv = new GetMessagePostfixEvent();
+        RaiseLocalEvent(source, postfixEv);
+        if (!string.IsNullOrEmpty(postfixEv.Postfix))
+            wrappedMessagePostfix = postfixEv.Postfix;
+        // Goobstation end
+
         // This message may have a radio prefix, and should then be whispered to the resolved radio channel
         if (checkRadioPrefix)
         {
             if (TryProccessRadioMessage(source, message, out var modMessage, out var channel))
             {
-                SendEntityWhisper(source, modMessage, range, channel, nameOverride, hideLog, ignoreActionBlocker);
+                SendEntityWhisper(source, modMessage, range, channel, nameOverride, hideLog, ignoreActionBlocker, wrappedMessagePostfix); // Goob edit
+                return;
+            }
+        }
+
+        // Goobstation - Starlight collective mind port
+        if (desiredType == InGameICChatType.CollectiveMind)
+        {
+            if (TryProccessCollectiveMindMessage(source, message, out var modMessage, out var channel))
+            {
+                SendCollectiveMindChat(source, modMessage, channel);
                 return;
             }
         }
@@ -246,13 +280,19 @@ public sealed partial class ChatSystem : SharedChatSystem
         switch (desiredType)
         {
             case InGameICChatType.Speak:
-                SendEntitySpeak(source, message, range, nameOverride, hideLog, ignoreActionBlocker);
+                SendEntitySpeak(source, message, range, nameOverride, hideLog, ignoreActionBlocker, wrappedMessagePostfix); // Goob edit
                 break;
             case InGameICChatType.Whisper:
-                SendEntityWhisper(source, message, range, null, nameOverride, hideLog, ignoreActionBlocker);
+                SendEntityWhisper(source, message, range, null, nameOverride, hideLog, ignoreActionBlocker, wrappedMessagePostfix); // Goob edit
                 break;
             case InGameICChatType.Emote:
                 SendEntityEmote(source, message, range, nameOverride, hideLog: hideLog, ignoreActionBlocker: ignoreActionBlocker);
+                break;
+            case InGameICChatType.Subtle:
+                SendEntitySubtle(source, message, range, nameOverride, hideLog: hideLog, ignoreActionBlocker: ignoreActionBlocker);
+                break;
+            case InGameICChatType.Telepathic:
+                _telepath.SendTelepathicChat(source, message, range == ChatTransmitRange.HideChat);
                 break;
         }
     }
@@ -327,7 +367,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         _chatManager.ChatMessageToAll(ChatChannel.Radio, message, wrappedMessage, default, false, true, colorOverride);
         if (playSound)
         {
-            _audio.PlayGlobal(announcementSound ?? new SoundPathSpecifier(DefaultAnnouncementSound), Filter.Broadcast(), true, AudioParams.Default.WithVolume(-2f));
+            _audio.PlayGlobal(announcementSound == null ? DefaultAnnouncementSound : _audio.ResolveSound(announcementSound), Filter.Broadcast(), true, AudioParams.Default.WithVolume(-2f));
         }
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Global station announcement from {sender}: {message}");
     }
@@ -407,13 +447,89 @@ public sealed partial class ChatSystem : SharedChatSystem
 
     #region Private API
 
+    // Goobstation - Starlight collective mind port
+    private void SendCollectiveMindChat(EntityUid source, string message, CollectiveMindPrototype? collectiveMind)
+    {
+        if (_mobStateSystem.IsDead(source) || collectiveMind == null || message == "" || !TryComp<CollectiveMindComponent>(source, out var sourseCollectiveMindComp) || !sourseCollectiveMindComp.Minds.ContainsKey(collectiveMind.ID))
+            return;
+
+        var clients = Filter.Empty();
+        var clientsSeeNames = Filter.Empty();
+        var mindQuery = EntityQueryEnumerator<CollectiveMindComponent, ActorComponent>();
+        while (mindQuery.MoveNext(out var uid, out var collectMindComp, out var actorComp))
+        {
+            if (_mobStateSystem.IsDead(uid))
+                continue;
+
+            if (collectMindComp.Minds.ContainsKey(collectiveMind.ID) || collectMindComp.HearAll)
+            {
+                if (collectMindComp.SeeAllNames)
+                    clientsSeeNames.AddPlayer(actorComp.PlayerSession);
+                else
+                    clients.AddPlayer(actorComp.PlayerSession);
+            }
+        }
+
+        var Number = $"{sourseCollectiveMindComp.Minds[collectiveMind.ID]}";
+
+        var admins = _adminManager.ActiveAdmins
+            .Select(p => p.Channel);
+
+        string messageWrap = Loc.GetString("collective-mind-chat-wrap-message",
+            ("message", message),
+            ("channel", collectiveMind.LocalizedName),
+            ("number", Number));
+        string namedMessageWrap = Loc.GetString("collective-mind-chat-wrap-message-named",
+            ("source", source),
+            ("message", message),
+            ("channel", collectiveMind.LocalizedName));
+        string adminMessageWrap = Loc.GetString("collective-mind-chat-wrap-message-admin",
+            ("source", source),
+            ("message", message),
+            ("channel", collectiveMind.LocalizedName),
+            ("number", Number));
+
+        _adminLogger.Add(LogType.Chat, LogImpact.Low, $"CollectiveMind chat from {ToPrettyString(source):Player}: {message}");
+
+        // send to normal clients
+        _chatManager.ChatMessageToManyFiltered(clients,
+            ChatChannel.CollectiveMind,
+            message,
+            collectiveMind.ShowNames ? namedMessageWrap : messageWrap,
+            source,
+            false,
+            true,
+            collectiveMind.Color);
+
+        // send to normal clients that should always see names, aka ghosts
+        _chatManager.ChatMessageToManyFiltered(clientsSeeNames,
+            ChatChannel.CollectiveMind,
+            message,
+            namedMessageWrap,
+            source,
+            false,
+            true,
+            collectiveMind.Color);
+
+        // FOR ADMINS
+        _chatManager.ChatMessageToMany(ChatChannel.CollectiveMind,
+            message,
+            adminMessageWrap,
+            source,
+            false,
+            true,
+            admins,
+            collectiveMind.Color);
+    }
+
     private void SendEntitySpeak(
         EntityUid source,
         string originalMessage,
         ChatTransmitRange range,
         string? nameOverride,
         bool hideLog = false,
-        bool ignoreActionBlocker = false
+        bool ignoreActionBlocker = false,
+        string wrappedMessagePostfix = "" // Goobstation
         )
     {
         if (!_actionBlocker.CanSpeak(source) && !ignoreActionBlocker)
@@ -444,7 +560,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         name = FormattedMessage.EscapeText(name);
 
-        var wrappedMessage = Loc.GetString(speech.Bold ? "chat-manager-entity-say-bold-wrap-message" : "chat-manager-entity-say-wrap-message",
+        var wrappedMessage = Loc.GetString((speech.Bold ? "chat-manager-entity-say-bold-wrap-message" : "chat-manager-entity-say-wrap-message") + wrappedMessagePostfix, // Goob edit
             ("entityName", name),
             ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
             ("fontType", speech.FontId),
@@ -486,7 +602,8 @@ public sealed partial class ChatSystem : SharedChatSystem
         RadioChannelPrototype? channel,
         string? nameOverride,
         bool hideLog = false,
-        bool ignoreActionBlocker = false
+        bool ignoreActionBlocker = false,
+        string wrappedMessagePostfix = "" // Goobstation
         )
     {
         if (!_actionBlocker.CanSpeak(source) && !ignoreActionBlocker)
@@ -514,13 +631,13 @@ public sealed partial class ChatSystem : SharedChatSystem
         }
         name = FormattedMessage.EscapeText(name);
 
-        var wrappedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
+        var wrappedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message" + wrappedMessagePostfix, // Goob edit
             ("entityName", name), ("message", FormattedMessage.EscapeText(message)));
 
-        var wrappedobfuscatedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message",
+        var wrappedobfuscatedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message" + wrappedMessagePostfix, // Goob edit
             ("entityName", nameIdentity), ("message", FormattedMessage.EscapeText(obfuscatedMessage)));
 
-        var wrappedUnknownMessage = Loc.GetString("chat-manager-entity-whisper-unknown-wrap-message",
+        var wrappedUnknownMessage = Loc.GetString("chat-manager-entity-whisper-unknown-wrap-message" + wrappedMessagePostfix, // Goob edit
             ("message", FormattedMessage.EscapeText(obfuscatedMessage)));
 
 
@@ -586,6 +703,14 @@ public sealed partial class ChatSystem : SharedChatSystem
         var ent = Identity.Entity(source, EntityManager);
         string name = FormattedMessage.EscapeText(nameOverride ?? Name(ent));
 
+        // Force first word of action to lowercase
+        var words = action.Split(new[] { ' ' }, 2);
+        if (words.Length > 0)
+        {
+            words[0] = words[0].ToLowerInvariant();
+            action = string.Join(" ", words);
+        }
+
         // Emotes use Identity.Name, since it doesn't actually involve your voice at all.
         var wrappedMessage = Loc.GetString("chat-manager-entity-me-wrap-message",
             ("entityName", name),
@@ -600,6 +725,55 @@ public sealed partial class ChatSystem : SharedChatSystem
                 _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Emote from {ToPrettyString(source):user} as {name}: {action}");
             else
                 _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Emote from {ToPrettyString(source):user}: {action}");
+    }
+
+    private void SendEntitySubtle(
+        EntityUid source,
+        string action,
+        ChatTransmitRange range,
+        string? nameOverride,
+        bool hideLog = false,
+        bool ignoreActionBlocker = false,
+        NetUserId? author = null
+        )
+    {
+        if (!_actionBlocker.CanEmote(source) && !ignoreActionBlocker)
+            return;
+
+        // get the entity's apparent name (if no override provided).
+        var ent = Identity.Entity(source, EntityManager);
+        string name = FormattedMessage.EscapeText(nameOverride ?? Name(ent));
+
+        // Force first word of action to lowercase
+        var words = action.Split(new[] { ' ' }, 2);
+        if (words.Length > 0)
+        {
+            words[0] = words[0].ToLowerInvariant();
+            action = string.Join(" ", words);
+        }
+
+        // Emotes use Identity.Name, since it doesn't actually involve your voice at all.
+        var wrappedMessage = Loc.GetString("chat-manager-entity-subtle-wrap-message",
+            ("entityName", name),
+            ("entity", ent),
+            ("message", FormattedMessage.RemoveMarkup(action)));
+
+        foreach (var (session, data) in GetRecipients(source, WhisperClearRange))
+        {
+            if (session.AttachedEntity is not { Valid: true } listener)
+                continue;
+
+            if (MessageRangeCheck(session, data, range) == MessageRangeCheckResult.Disallowed)
+                continue;
+
+            _chatManager.ChatMessageToOne(ChatChannel.Emotes, action, wrappedMessage, source, false, session.Channel);
+        }
+
+        if (!hideLog)
+            if (name != Name(source))
+                _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Subtle from {ToPrettyString(source):user} as {name}: {action}");
+            else
+                _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Subtle from {ToPrettyString(source):user}: {action}");
     }
 
     // ReSharper disable once InconsistentNaming
@@ -630,9 +804,13 @@ public sealed partial class ChatSystem : SharedChatSystem
         var clients = GetDeadChatClients();
         var playerName = Name(source);
         string wrappedMessage;
+
+        var speech = GetSpeechVerb(source, message); // Goobstation - Dead chat verbs
+
         if (_adminManager.IsAdmin(player))
         {
             wrappedMessage = Loc.GetString("chat-manager-send-admin-dead-chat-wrap-message",
+                ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))), // Goobstation - Dead chat verbs
                 ("adminChannelName", Loc.GetString("chat-manager-admin-channel-name")),
                 ("userName", player.Channel.UserName),
                 ("message", FormattedMessage.EscapeText(message)));
@@ -641,6 +819,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         else
         {
             wrappedMessage = Loc.GetString("chat-manager-send-dead-chat-wrap-message",
+                ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))), // Goobstation - Dead chat verbs
                 ("deadChannelName", Loc.GetString("chat-manager-dead-channel-name")),
                 ("playerName", (playerName)),
                 ("message", FormattedMessage.EscapeText(message)));
@@ -791,8 +970,12 @@ public sealed partial class ChatSystem : SharedChatSystem
 
     private IEnumerable<INetChannel> GetDeadChatClients()
     {
+        if (_ghostVisibility.GhostsVisible()) // Goobstation
+            return Filter.Broadcast().Recipients.Select(p => p.Channel);
+
         return Filter.Empty()
             .AddWhereAttachedEntity(HasComp<GhostComponent>)
+            .AddWhereAttachedEntity(_scrying.IsScryingOrbEquipped) // Goobstation
             .Recipients
             .Union(_adminManager.ActiveAdmins)
             .Select(p => p.Channel);
@@ -968,7 +1151,10 @@ public enum InGameICChatType : byte
 {
     Speak,
     Emote,
-    Whisper
+    Whisper,
+    Subtle, // FloofStation,
+    Telepathic, // Goobstation Change
+    CollectiveMind // Goobstation - Starlight collective mind port
 }
 
 /// <summary>

@@ -53,16 +53,12 @@
           paths:
             - /Maps/Shuttles/trading_outpost.yml
           nameDataset: TradeStationNames
-        mining: !type:GridSpawnGroup
-          paths:
-          - /Maps/Shuttles/mining.yml
-          nameDataset: MiningShuttleNames
         # Spawn last
         ruins: !type:GridSpawnGroup
           hide: true
           nameGrid: true
           minCount: 2
-          maxCount: 2
+          maxCount: 5
           stationGrid: false
           paths:
           - /Maps/Ruins/abandoned_outpost.yml
@@ -72,9 +68,11 @@
           - /Maps/Ruins/djstation.yml
           - /Maps/Ruins/empty_flagship.yml
           - /Maps/Ruins/old_ai_sat.yml
+          - /Maps/Ruins/ruined_prison_ship.yml
           - /Maps/Ruins/syndicate_dropship.yml
           - /Maps/Ruins/whiteship_ancient.yml
           - /Maps/Ruins/whiteship_bluespacejumper.yml
+          - /Maps/Ruins/wrecklaimer.yml
         vgroid: !type:DungeonSpawnGroup
           minimumDistance: 300
           maximumDistance: 350
@@ -86,6 +84,11 @@
             inherent: true
           protos:
           - VGRoid
+        # mining: !type:GridSpawnGroup
+        #   stationGrid: false
+        #   paths:
+        #   - /Maps/Shuttles/mining.yml
+        #   nameDataset: MiningShuttleNames
 
 - type: entity
   id: BaseStationCentcomm

@@ -15,6 +15,7 @@ namespace Content.Client.Input
             common.AddFunction(ContentKeyFunctions.FocusChat);
             common.AddFunction(ContentKeyFunctions.FocusLocalChat);
             common.AddFunction(ContentKeyFunctions.FocusEmote);
+            common.AddFunction(ContentKeyFunctions.FocusSubtle); // FloofStation
             common.AddFunction(ContentKeyFunctions.FocusWhisperChat);
             common.AddFunction(ContentKeyFunctions.FocusRadio);
             common.AddFunction(ContentKeyFunctions.FocusLOOC);
@@ -72,6 +73,7 @@ namespace Content.Client.Input
             human.AddFunction(ContentKeyFunctions.OpenInventoryMenu);
             human.AddFunction(ContentKeyFunctions.SmartEquipBackpack);
             human.AddFunction(ContentKeyFunctions.SmartEquipBelt);
+            human.AddFunction(ContentKeyFunctions.SmartEquipBack); // Goobstation - Smart equip to back
             human.AddFunction(ContentKeyFunctions.OpenBackpack);
             human.AddFunction(ContentKeyFunctions.OpenBelt);
             human.AddFunction(ContentKeyFunctions.MouseMiddle);

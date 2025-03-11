@@ -73,6 +73,7 @@
   - type: MobMover
   - type: ZombieImmune
   - type: ProtectedFromStepTriggers
+  - type: Fauna # Lavaland Change
 
 - type: entity
   abstract: true
@@ -234,6 +235,9 @@
     rules: ghost-role-information-angry-slimes-rules
     raffle:
       settings: short
+    requirements: # ShibaStation - Antag Playtime Requirements
+      - !type:OverallPlaytimeRequirement
+        time: 72000 # 20 hours
   - type: NpcFactionMember
     factions:
     - SimpleHostile
@@ -296,6 +300,7 @@
     solution: bloodstream
   - type: DrainableSolution
     solution: bloodstream
+  - type: Fauna # Lavaland Change
 
 - type: entity
   name: Reagent Slime Spawner

@@ -3,7 +3,7 @@
   mapName: 'Cluster'
   mapPath: /Maps/_ShibaStation/cluster.yml
   minPlayers: 0
-  maxPlayers: 35
+  maxPlayers: 25
   stations:
     Cluster:
       stationProto: StandardNanotrasenStation
@@ -54,7 +54,7 @@
             SecurityCadet: [ 2, 2 ]
             #supply
             Quartermaster: [ 1, 1 ]
-            SalvageSpecialist: [ 2, 2 ]
+            SalvageSpecialist: [ 5, 5 ]
             CargoTechnician: [ 2, 2 ]
             MailCarrier: [ 1, 1 ]
             #civillian
